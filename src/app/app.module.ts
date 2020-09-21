@@ -9,6 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { NgxEchartsModule } from 'ngx-echarts';
+
+import { ChartExamplesComponent } from './pages/chart-examples/chart-examples.component';
+import { BarChartComponent, LineChartComponent } from './shared/components/index';
 
 @NgModule({
   imports: [
@@ -19,9 +23,13 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    NgxEchartsModule,
   ],
   declarations: [
     AppComponent,
+    ChartExamplesComponent,
+    BarChartComponent,
+    LineChartComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
