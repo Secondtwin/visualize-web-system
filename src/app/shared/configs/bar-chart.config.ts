@@ -1,4 +1,4 @@
-import { EChartOption, ECharts } from 'echarts';
+import { EChartOption } from 'echarts';
 import { identity, mergeDeepLeft, times } from 'ramda';
 import { waldenTheme } from 'src/app/theme/chart-theme.config';
 
@@ -9,8 +9,9 @@ import { waldenTheme } from 'src/app/theme/chart-theme.config';
  * @returns chart config
  */
 export function getChartConfig(
-  theme: ECharts.Theme = waldenTheme?.theme,
+  theme = waldenTheme?.theme,
   {
+    title,
     series = [],
     xAxis = {} as EChartOption.XAxis,
     yAxis = {},
@@ -23,7 +24,7 @@ export function getChartConfig(
     ? (xAxis as EChartOption.XAxis).axisLabel
     : { rotate: '' };
 
-  const [top, right, bottom, left] = '10 10 30 30'.split(' ');
+  const [top, right, bottom, left] = '50 10 30 30'.split(' ');
 
   return {
     grid: {
@@ -32,6 +33,8 @@ export function getChartConfig(
       bottom,
       left,
     },
+    title,
+    color: theme?.color,
     tooltip: {
       trigger: 'item',
       triggerOn: 'mousemove',
@@ -45,7 +48,7 @@ export function getChartConfig(
       },
       textStyle: {
         color: theme?.textColor,
-        fontSize: 10,
+        fontSize: 12,
         fontWeight: 700,
       },
       backgroundColor: theme?.markTextColor,
@@ -134,12 +137,9 @@ export function getChartConfig(
         name,
         hoverAnimation: checkForFalse('false'),
         data,
-        itemStyle: {
-          color: theme?.color[0],
-        },
         stack,
-        barWidth: undefined,
-        barMaxWidth: undefined,
+        barWidth: '60%',
+        barMaxWidth: '80%',
         barGap,
         zlevel: 0,
         barCategoryGap,

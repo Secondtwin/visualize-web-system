@@ -1,29 +1,22 @@
 import { EChartOption } from 'echarts';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-chart-examples',
   templateUrl: './chart-examples.component.html',
-  styleUrls: ['./chart-examples.component.scss']
+  styleUrls: ['./chart-examples.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartExamplesComponent {
   public lineChartOption = {
     title: {
       text: 'Line Chart Example'
     },
-    tooltip: {
-      trigger: 'axis'
-    },
     legend: {
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
     },
     xAxis: {
-      type: 'category',
-      boundaryGap: false,
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
-    },
-    yAxis: {
-      type: 'value'
     },
     series: [
       {
@@ -62,21 +55,57 @@ export class ChartExamplesComponent {
     title: {
       text: 'Bar Chart Example'
     },
-    grid: {
-      containLabel: true,
-    },
     xAxis: {
-      type: 'category',
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
     },
     series: [{
       data: [120, 200, 150, 80, 70, 110, 130],
       type: 'bar',
     }]
   };
+  public pieChartOption = {
+    title: {
+      text: 'Pie Chart Example'
+    },
+    legend: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+    },
+    series: [
+      {
+        name: 'pieChart',
+        type: 'pie',
+        data: [
+          { value: 335, name: 'Mon' },
+          { value: 310, name: 'Tue' },
+          { value: 234, name: 'Wed' },
+          { value: 135, name: 'Thu' },
+          { value: 1548, name: 'Fri' }
+        ],
+      }
+    ]
+  };
+  public scatterChartOption = {
+    title: {
+      text: 'Scatter Chart Example'
+    },
+    series: [{
+      data: [
+        [10.0, 8.04],
+        [8.0, 6.95],
+        [13.0, 7.58],
+        [9.0, 8.81],
+        [11.0, 8.33],
+        [14.0, 9.96],
+        [6.0, 7.24],
+        [4.0, 4.26],
+        [12.0, 10.84],
+        [7.0, 4.82],
+        [5.0, 5.68]
+      ],
+      type: 'scatter'
+    }]
+  };
+
 
   /**
    * Chart tooltip formatter.
@@ -87,7 +116,7 @@ export class ChartExamplesComponent {
     const { value, name, color } = parameters;
 
     return `
-    <div style="font-size: 12px;">
+    <div>
       <span style="color:${color};">
         <b>${name}</b>
       </span>
@@ -113,7 +142,7 @@ export class ChartExamplesComponent {
     const [{ name }] = parameters;
 
     return `
-    <div style="font-size: 12px;">
+    <div>
       <span>
         <b>${name}</b>
       </span>
@@ -122,12 +151,32 @@ export class ChartExamplesComponent {
       <span>
         Data:
       </span>
-      ${ parameters.map(({ data, color }) => `
+      ${parameters.map(({ data, color }) => `
         <span style="color:${color};">
           ${data}
         </span>
-      `) }
+      `)}
       </div>
+    </div>
+    `;
+  }
+
+  /**
+   * Chart tooltip formatter.
+   * @param parameters - chart data
+   * @returns html string
+   */
+  public tooltipScatterChartFormatter(parameters: EChartOption.Tooltip.Format): string {
+    const { data, color } = parameters;
+
+    return `
+    <div>
+      <span style="color:${color};">
+        Data:
+      </span>
+      <span>
+        ${data.join(', ')}
+      </span>
     </div>
     `;
   }

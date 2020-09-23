@@ -9,10 +9,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ChartExamplesComponent } from './pages/chart-examples/chart-examples.component';
-import { BarChartComponent, LineChartComponent } from './shared/components/index';
+import { CreateChartComponent } from './pages/create-chart/create-chart.component';
+import {
+  BarChartComponent,
+  LineChartComponent,
+  PieChartComponent,
+  ScatterChartComponent,
+} from './shared/components/index';
 
 @NgModule({
   imports: [
@@ -23,6 +30,7 @@ import { BarChartComponent, LineChartComponent } from './shared/components/index
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    MatCardModule,
     NgxEchartsModule,
   ],
   declarations: [
@@ -30,6 +38,9 @@ import { BarChartComponent, LineChartComponent } from './shared/components/index
     ChartExamplesComponent,
     BarChartComponent,
     LineChartComponent,
+    PieChartComponent,
+    ScatterChartComponent,
+    CreateChartComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

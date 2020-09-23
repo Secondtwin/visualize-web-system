@@ -11,6 +11,7 @@ export function getChartConfig(
   theme = waldenTheme?.theme,
   {
     grid,
+    title,
     series = [],
     xAxis = {} as EChartOption.XAxis,
     yAxis = {},
@@ -24,11 +25,13 @@ export function getChartConfig(
 ): EChartOption<EChartOption.SeriesLine> {
   const xAxisData = xAxis as EChartOption.XAxis;
   const yAxisData = yAxis as EChartOption.YAxis;
-  const [top, right, bottom, left] = '10 10 30 40'.split(' ');
-  const defaultSymbolSize = 5;
+  const [top, right, bottom, left] = '70 10 30 40'.split(' ');
+  const defaultSymbolSize = 10;
 
   return {
     grid: grid || { top, right, bottom, left },
+    title,
+    color: theme?.color,
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -41,7 +44,7 @@ export function getChartConfig(
       confine: true,
       textStyle: {
         color: theme?.textColor,
-        fontSize: 10,
+        fontSize: 12,
         fontWeight: 'bold',
       },
       backgroundColor: theme?.markTextColor,
@@ -132,7 +135,7 @@ export function getChartConfig(
       symbol = 'circle',
       symbolSize,
       itemStyle,
-      lineStyle,
+      lineStyle = { width: 3 },
       areaStyle,
       smooth,
       markPoint,
@@ -149,7 +152,11 @@ export function getChartConfig(
       smooth,
       markPoint,
     })),
-    legend,
+    legend: {
+      ...legend,
+      top: 30,
+      left: 0,
+    },
     dataZoom,
   };
 }
@@ -263,7 +270,11 @@ export function getMultiAxisChartConfig(
       areaStyle,
       itemStyle,
     })),
-    legend,
+    legend: {
+      ...legend,
+      top: 30,
+      left: 0,
+    },
   };
 }
 

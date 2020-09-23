@@ -1,23 +1,28 @@
-<div>
-  <p>BAR CHART</p>
-  <app-bar-chart
-    [chartData]="barChartOption"
-    [tooltipFormatter]="tooltipBarChartFormatter"
-  ></app-bar-chart>
+<div class="chart-examples-wrapper">
+  <mat-card class="chart-examples">
+    <app-bar-chart
+      [chartData]="barChartOption"
+      [tooltipFormatter]="tooltipBarChartFormatter"
+    ></app-bar-chart>
+  </mat-card>
+  <mat-card class="chart-examples">
+    <app-scatter-chart
+      [chartData]="scatterChartOption"
+      [tooltipFormatter]="tooltipScatterChartFormatter"
+    ></app-scatter-chart>
+  </mat-card>
 </div>
-<div>
-  <p>LINE CHART</p>
-  <app-line-chart
-    [chartData]="lineChartOption"
-    [tooltipFormatter]="tooltipLineChartFormatter"
-  ></app-line-chart>
+<div class="chart-examples-wrapper">
+  <mat-card class="chart-examples">
+    <app-pie-chart
+      [chartData]="pieChartOption"
+      [tooltipFormatter]="tooltipBarChartFormatter"
+    ></app-pie-chart>
+  </mat-card>
+  <mat-card class="chart-examples">
+    <app-line-chart
+      [chartData]="lineChartOption"
+      [tooltipFormatter]="tooltipLineChartFormatter"
+    ></app-line-chart>
+  </mat-card>
 </div>
-<div>
-  <p>PIE CHART</p>
-  <div></div>
-</div>
-<div>
-  <p>SCATTER CHART</p>
-  <div></div>
-</div>
-

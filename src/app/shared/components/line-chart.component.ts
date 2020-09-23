@@ -24,7 +24,7 @@ export class LineChartComponent extends ChartBaseComponent<EChartOption.SeriesLi
   protected getOptions(): EChartOption<EChartOption.SeriesLine> {
     const chartData = this.getChartData();
 
-    if (Array.isArray(chartData.xAxis) && Array.isArray(chartData.yAxis))  {
+    if (Array.isArray(chartData.xAxis) && Array.isArray(chartData.yAxis)) {
       return getMultiAxisChartConfig(this.theme, chartData);
     }
 
