@@ -1,23 +1,25 @@
 <ng-container>
-  <mat-toolbar class="app-header" color="primary">VISUALIZE</mat-toolbar>
-
-  <mat-sidenav-container class="app-container" color="accent">
+  <mat-sidenav-container color="accent">
+    <mat-toolbar class="app-header" color="primary">VISUALIZE</mat-toolbar>
     <mat-sidenav
       #sidenav
       opened
       mode="side"
       class="app-sidenav"
-      [fixedInViewport]="false"
+      [fixedInViewport]="true"
       [fixedTopGap]="0"
       [fixedBottomGap]="0">
       <mat-nav-list>
         <a mat-list-item> Activities </a>
         <a mat-list-item> Create Account </a>
         <a mat-list-item
+          routerLinkActive="sidenav-item-selected"
           routerLink="/charts">
           Charts
         </a>
         <a mat-list-item
+          color="primary"
+          routerLinkActive="sidenav-item-selected"
           routerLink="/create-chart">
           Create Chart
         </a>

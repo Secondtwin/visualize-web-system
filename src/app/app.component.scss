@@ -1,25 +1,43 @@
 :host {
-  .app-container {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    height: calc(100% - 60px);
-  }
-
   .app-sidenav {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 200px;
-    background: #cccccc;
+    background: #ffffff;
   }
 
   .app-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    color: #ffffff;
+    padding-left: 25px;
   }
+
+  .sidenav-item-selected {
+    color: #673ab7;
+    background: rgba(103,58,183,.15);
+  }
+}
+
+::ng-deep {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #e2e2e2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #aaaaaa;
+    outline: 1px solid #aaaaaa;
+  }
+
+  /* START: Global Styles */
+
+  .page-title {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 25px 20px 10px;
+  }
+
+  /* END: Global Styles */
 }

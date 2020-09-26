@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { EChartOption, ECharts } from 'echarts';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { EChartOption } from 'echarts';
 import { ChartBaseComponent } from './chart-base.component';
 import { getChartConfig } from '../configs/scatter-chart.config';
 
@@ -15,13 +15,10 @@ import { getChartConfig } from '../configs/scatter-chart.config';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScatterChartComponent extends ChartBaseComponent {
-  @Output() public readonly chartInstanceInit: EventEmitter<ECharts> = new EventEmitter();
-
-  public onChartInit(instance: ECharts): void {
-    super.onChartInit(instance);
-    this.chartInstanceInit.emit(instance);
-  }
-
+  /**
+   * Gets chart config options.
+   * @returns chart config
+   */
   protected getOptions(): EChartOption {
     return getChartConfig(this.theme, this.getChartData());
   }

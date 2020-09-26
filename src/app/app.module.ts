@@ -1,3 +1,4 @@
+import { BottomSheetComponent } from './pages/bottom-sheet/bottom-sheet.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,11 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NgxEchartsModule } from 'ngx-echarts';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { NgxEchartsModule } from 'ngx-echarts';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatButtonModule } from '@angular/material/button';
 
 import { ChartExamplesComponent } from './pages/chart-examples/chart-examples.component';
 import { CreateChartComponent } from './pages/create-chart/create-chart.component';
@@ -32,6 +36,9 @@ import {
     MatListModule,
     MatCardModule,
     NgxEchartsModule,
+    MatTabsModule,
+    MatBottomSheetModule,
+    MatButtonModule,
   ],
   declarations: [
     AppComponent,
@@ -41,6 +48,7 @@ import {
     PieChartComponent,
     ScatterChartComponent,
     CreateChartComponent,
+    BottomSheetComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

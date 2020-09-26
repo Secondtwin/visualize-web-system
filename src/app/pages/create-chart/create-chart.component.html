@@ -1,3 +1,25 @@
-<p>
-  create-chart works!
-</p>
+<div class="create-chart-bg">
+  <div class="page-title">CREATE CHART</div>
+  <div class="tabs-wrapper">
+    <mat-tab-group mat-align-tabs="left">
+      <mat-tab label="ENTER DATA MANUALLY"
+        class="mat-tab-wrapper">
+        <div class="mat-tab-wrapper">
+          Add Table
+        </div>
+      </mat-tab>
+  
+      <mat-tab label="UPLOAD EXEL FILE">
+        <div class="mat-tab-wrapper">
+          <p>Please upload file with data.</p>
+          <button mat-raised-button
+            color="primary"
+            (click)="openBottomSheet()">
+            Open file
+          </button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  
+</div>

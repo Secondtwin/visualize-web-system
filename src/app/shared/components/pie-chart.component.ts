@@ -15,10 +15,17 @@ import { getChartConfig } from '../configs/pie-chart.config';
   `,
 })
 export class PieChartComponent extends ChartBaseComponent {
+  /**
+   * Gets chart config options.
+   * @returns chart config
+   */
   protected getOptions(): EChartOption {
     return getChartConfig.call(this.chartInstance, this.theme, this.getChartData());
   }
 
+  /**
+   * Sets chart options.
+   */
   protected setOptions(): void {
     super.setOptions();
   }

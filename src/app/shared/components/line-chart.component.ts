@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { EChartOption, ECharts } from 'echarts';
+import { Component } from '@angular/core';
+import { EChartOption } from 'echarts';
 import { ChartBaseComponent } from './chart-base.component';
 import { getChartConfig, getMultiAxisChartConfig } from '../configs/line-chart.config';
 
@@ -14,13 +14,10 @@ import { getChartConfig, getMultiAxisChartConfig } from '../configs/line-chart.c
   `,
 })
 export class LineChartComponent extends ChartBaseComponent<EChartOption.SeriesLine> {
-  @Output() public readonly chartInstanceInit: EventEmitter<ECharts> = new EventEmitter();
-
-  public onChartInit(instance: ECharts): void {
-    super.onChartInit(instance);
-    this.chartInstanceInit.emit(instance);
-  }
-
+  /**
+   * Gets chart config options.
+   * @returns chart config
+   */
   protected getOptions(): EChartOption<EChartOption.SeriesLine> {
     const chartData = this.getChartData();
 

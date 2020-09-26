@@ -16,11 +16,6 @@ export function getChartConfig(
     xAxis = {} as EChartOption.XAxis,
     yAxis = {},
     legend,
-    animation,
-    animationDuration,
-    animationDurationUpdate,
-    animationEasing,
-    dataZoom,
   }: EChartOption<EChartOption.SeriesLine>,
 ): EChartOption<EChartOption.SeriesLine> {
   const xAxisData = xAxis as EChartOption.XAxis;
@@ -125,10 +120,6 @@ export function getChartConfig(
       },
       boundaryGap: yAxisData.boundaryGap,
     },
-    animation: getValue(animation, false),
-    animationEasing,
-    animationDuration: getValue(animationDuration, 0),
-    animationDurationUpdate: getValue(animationDurationUpdate, 0),
     series: series.map(({
       name,
       data,
@@ -157,7 +148,6 @@ export function getChartConfig(
       top: 30,
       left: 0,
     },
-    dataZoom,
   };
 }
 
