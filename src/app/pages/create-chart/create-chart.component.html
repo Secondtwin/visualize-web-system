@@ -5,21 +5,19 @@
       <mat-tab label="ENTER DATA MANUALLY"
         class="mat-tab-wrapper">
         <div class="mat-tab-wrapper">
-          Add Table
+          <app-create-chart-table></app-create-chart-table>
         </div>
       </mat-tab>
-  
+
       <mat-tab label="UPLOAD EXEL FILE">
         <div class="mat-tab-wrapper">
           <p>Please upload file with data.</p>
-          <button mat-raised-button
-            color="primary"
-            (click)="openBottomSheet()">
-            Open file
-          </button>
+          <input type="file"
+            id="file"
+            class="input-button"
+            (change)="handleFileInput($event.target.files)">
         </div>
       </mat-tab>
     </mat-tab-group>
   </div>
-  
 </div>

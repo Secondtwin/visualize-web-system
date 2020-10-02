@@ -1,6 +1,4 @@
-import { BottomSheetComponent } from './../bottom-sheet/bottom-sheet.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-create-chart',
@@ -9,12 +7,13 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateChartComponent {
-  constructor(private bottomSheet: MatBottomSheet) {}
+  public fileToUpload: File = null;
 
   /**
-   * Opens bottom sheet to show options for open file.
+   * Opens file upload.
+   * @param files - incoming file
    */
-  public openBottomSheet(): void {
-    this.bottomSheet.open(BottomSheetComponent);
+  public handleFileInput(files: FileList): void {
+    this.fileToUpload = files.item(0);
   }
 }

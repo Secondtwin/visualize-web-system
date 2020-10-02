@@ -1,4 +1,4 @@
-import { BottomSheetComponent } from './pages/bottom-sheet/bottom-sheet.component';
+import { CreateChartTableComponent } from './pages/create-chart-table/create-chart-table.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { CdkTableModule } from '@angular/cdk/table';
 
 import { ChartExamplesComponent } from './pages/chart-examples/chart-examples.component';
 import { CreateChartComponent } from './pages/create-chart/create-chart.component';
@@ -39,6 +41,8 @@ import {
     MatTabsModule,
     MatBottomSheetModule,
     MatButtonModule,
+    CdkTableModule,
+    MatTableModule,
   ],
   declarations: [
     AppComponent,
@@ -48,7 +52,7 @@ import {
     PieChartComponent,
     ScatterChartComponent,
     CreateChartComponent,
-    BottomSheetComponent,
+    CreateChartTableComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
