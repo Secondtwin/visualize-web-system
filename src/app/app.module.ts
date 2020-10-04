@@ -17,6 +17,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatInputModule } from '@angular/material/input';
 
 import { ChartExamplesComponent } from './pages/chart-examples/chart-examples.component';
 import { CreateChartComponent } from './pages/create-chart/create-chart.component';
@@ -26,6 +28,7 @@ import {
   PieChartComponent,
   ScatterChartComponent,
 } from './shared/components/index';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -43,6 +46,9 @@ import {
     MatButtonModule,
     CdkTableModule,
     MatTableModule,
+    MatSliderModule,
+    FormsModule,
+    MatInputModule,
   ],
   declarations: [
     AppComponent,
