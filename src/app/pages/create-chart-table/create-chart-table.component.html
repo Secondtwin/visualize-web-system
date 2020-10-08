@@ -37,17 +37,19 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
     <ng-container *ngFor="let column of columns; let colIndex = index"
-      [cdkColumnDef]="column.id">
-      <mat-header-cell *cdkHeaderCellDef>
-        <mat-form-field class="example-full-width">
+      [cdkColumnDef]="column.columnDef">
+      <mat-header-cell *cdkHeaderCellDef
+        class="form-input">
+        <mat-form-field>
           <input matInput
             value="{{column.header}}"
             (change)="changeHeader($event?.target?.value, column)"
           >
         </mat-form-field>
       </mat-header-cell>
-      <mat-cell *cdkCellDef="let row">
-        <mat-form-field class="example-full-width">
+      <mat-cell *cdkCellDef="let row"
+        class="form-input">
+        <mat-form-field>
           <input matInput
             value="{{row[colIndex]?.value}}"
             (change)="changeRow($event?.target?.value, row[colIndex]?.id)"
@@ -64,5 +66,23 @@
 <button mat-raised-button
   color="primary"
   (click)=collectData()>
-  Collect Data
+  Display Data
 </button>
+
+<ng-container *ngIf="lineChartOptions">
+  <mat-card class="chart-examples">
+    <app-line-chart
+      [chartData]="lineChartOptions"
+      [tooltipFormatter]="tooltipLineChartFormatter"
+    ></app-line-chart>
+  </mat-card>
+</ng-container>
+
+<ng-container *ngIf="barChartOptions">
+  <mat-card class="chart-examples">
+    <app-bar-chart
+      [chartData]="barChartOptions"
+      [tooltipFormatter]="tooltipLineChartFormatter"
+    ></app-bar-chart>
+  </mat-card>
+</ng-container>

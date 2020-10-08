@@ -1,12 +1,9 @@
-import { DataSource } from '@angular/cdk/table';
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { BehaviorSubject, Observable } from 'rxjs';
-
-interface TableDataValue {
-  id: number;
-  value: string;
-}
+import { BehaviorSubject } from 'rxjs';
+import { TableDataHeader, TableDataSource, TableDataValue } from 'src/app/shared/models';
+import { mapToLineChartOptions, mapToBarChartOptions } from 'src/app/shared/mappers';
+import { EChartOption } from 'echarts';
 
 @Component({
   selector: 'app-create-chart-table',
@@ -18,13 +15,16 @@ export class CreateChartTableComponent implements OnInit {
   @ViewChild('table') public matTable: MatTable<any>;
 
   private dataSubject: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  private columnsValue: BehaviorSubject<any[]> = new BehaviorSubject([]);
 
   public dataSource: TableDataSource;
   public displayedColumns: string[] = [];
-  public columns: object[] = [];
+  public columns: TableDataHeader[] = [];
   public tableData: TableDataValue[][] = [];
   public columnSliderValue: number;
   public rowSliderValue: number;
+  public lineChartOptions: EChartOption;
+  public barChartOptions: EChartOption;
 
   public constructor() {
     this.dataSource = new TableDataSource(this.dataSubject);
@@ -35,53 +35,49 @@ export class CreateChartTableComponent implements OnInit {
   }
 
   public updateTableData(): void {
-    this.displayedColumns = this.generateHeaders(this.columnSliderValue);
     this.columns = this.generateColumns(this.columnSliderValue);
+    this.displayedColumns = this.generateHeaders();
     this.tableData = this.generateData(this.columnSliderValue, this.rowSliderValue);
 
     this.dataSubject.next(this.tableData);
   }
 
-  public generateHeaders(tableColumns: number): string[] {
-    const displayedColumns: string[] = [];
+  public generateColumns(tableColumns: number): TableDataHeader[] {
+    const columns: TableDataHeader[] = [];
     let innerIndex = 1;
-
-    do {
-      displayedColumns.push(innerIndex.toString());
-    }
-    while (innerIndex++ < tableColumns);
-
-    return displayedColumns;
-  }
-
-  public generateColumns(tableColumns: number): object[] {
-    const columns: object[] = [];
-    let innerIndex = 1;
-    let columnObj: object;
+    let columnObj: TableDataHeader;
 
     do {
       // tslint:disable-next-line: new-parens
       columnObj = new function(): void {
-        this.id = innerIndex.toString();
-        this.columnDef = innerIndex.toString();
-        this.header = innerIndex.toString();
-        this.cell = [];
+        this.id = (this.columnsValue?.value && this.columnsValue?.value[innerIndex]?.id)
+          ? this.columnsValue?.value[innerIndex]?.id
+          : innerIndex.toString();
+        this.columnDef = (this.columnsValue?.value && this.columnsValue?.value[innerIndex]?.columnDef)
+          ? this.columnsValue?.value[innerIndex]?.columnDef
+          : innerIndex.toString();
+        this.header = (this.columnsValue?.value && this.columnsValue?.value[innerIndex]?.header)
+          ? this.columnsValue?.value[innerIndex]?.header
+          : innerIndex.toString();
       };
 
       columns.push(columnObj);
-
     }
     while (innerIndex++ < tableColumns);
 
     return columns;
   }
 
+  public generateHeaders(): string[] {
+    return this.columns?.map((col: { columnDef: string }) => col?.columnDef);
+  }
+
   public generateData(tableColumns: number, tableRows: number): any[] {
     let innerIndex = 1;
     let outerIndex = 0;
     let value: number;
-    let tableRow: object[] = [];
-    const tableData: any[] = [];
+    let tableRow: TableDataValue[] = [];
+    const tableData: TableDataValue[][] = [];
 
     do {
       innerIndex = 1;
@@ -106,9 +102,9 @@ export class CreateChartTableComponent implements OnInit {
     return tableData;
   }
 
-  public changeHeader(value: string, column: object): void {
-    (column as { header: string }).header = value;
-    (column as { columnDef: string }).columnDef = value;
+  public changeHeader(value: string, column: TableDataHeader): void {
+    column.header = value;
+    column.columnDef = value;
   }
 
   public changeRow(inputValue: string, rowId: number): void {
@@ -120,17 +116,35 @@ export class CreateChartTableComponent implements OnInit {
 
   public collectData(): void {
     console.log(this.tableData, this.columns);
-  }
-}
-
-export class TableDataSource extends DataSource<any> {
-  public constructor(public data: BehaviorSubject<any[]>) {
-    super();
+    this.lineChartOptions = mapToLineChartOptions(this.tableData, this.columns);
+    this.barChartOptions = mapToBarChartOptions(this.tableData, this.columns);
   }
 
-  public connect(): Observable<any> {
-    return this.data.asObservable();
-  }
+  /**
+   * Chart tooltip formatter.
+   * @param parameters - chart data
+   * @returns html string
+   */
+  public tooltipLineChartFormatter(parameters: EChartOption.Tooltip.Format): string {
+    const [{ name }] = parameters;
 
-  public disconnect(): void {}
+    return `
+    <div>
+      <span>
+        <b>${name}</b>
+      </span>
+      <br>
+      <div>
+      <span>
+        Data:
+      </span>
+      ${parameters.map(({ data, color }) => `
+        <span style="color:${color};">
+          ${data}
+        </span>
+      `)}
+      </div>
+    </div>
+    `;
+  }
 }

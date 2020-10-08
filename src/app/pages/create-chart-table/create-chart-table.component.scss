@@ -2,4 +2,15 @@
   .table {
     width: 100%;
   }
+
+  .form-input {
+    margin: 0 5px;
+  }
+
+  ::ng-deep {
+    mat-cell:last-of-type,
+    mat-header-cell:last-of-type {
+      margin-right: 25px !important;
+    }
+  }
 }
