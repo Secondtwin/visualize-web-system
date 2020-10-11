@@ -1,19 +1,25 @@
 import { TableDataHeader, TableDataValue } from './../models';
 import { EChartOption } from 'echarts';
 
-export function mapToLineChartOptions(tableData: TableDataValue[][], tableColumns: TableDataHeader[]): EChartOption {
+export function mapToLineChartOptions(
+  tableData: TableDataValue[][],
+  rowHeaders: TableDataHeader[],
+  columnHeaders: TableDataHeader[],
+): EChartOption {
+  const legendData = rowHeaders?.map((item) => item?.header);
+
   return {
     title: {
       text: 'Line Chart',
     },
     legend: {
-      data: tableColumns?.map((item) => item?.header),
+      data: legendData,
     },
     xAxis: {
-      data: tableColumns?.map((item) => item?.header),
+      data: legendData,
     },
     series: tableData?.map((column, i) => ({
-      name: tableColumns[i]?.header,
+      name: legendData[i],
       type: 'line',
       stack: 'lineChart',
       data: column?.map((row) => row?.value),

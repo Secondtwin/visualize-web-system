@@ -15,10 +15,12 @@ export class CreateChartTableComponent implements OnInit {
   @ViewChild('table') public matTable: MatTable<any>;
 
   private dataSubject: BehaviorSubject<any[]> = new BehaviorSubject([]);
-  private columnsValue: BehaviorSubject<any[]> = new BehaviorSubject([]);
 
   public dataSource: TableDataSource;
   public displayedColumns: string[] = [];
+  public displayedRows: TableDataHeader[] = [];
+  public displayedRowsChanges: TableDataHeader[] = [];
+  public displayedColumnsChanges: TableDataHeader[] = [];
   public columns: TableDataHeader[] = [];
   public tableData: TableDataValue[][] = [];
   public columnSliderValue: number;
@@ -38,6 +40,7 @@ export class CreateChartTableComponent implements OnInit {
     this.columns = this.generateColumns(this.columnSliderValue);
     this.displayedColumns = this.generateHeaders();
     this.tableData = this.generateData(this.columnSliderValue, this.rowSliderValue);
+    this.displayedRows = this.generateRowHeaders(this.rowSliderValue);
 
     this.dataSubject.next(this.tableData);
   }
@@ -48,17 +51,10 @@ export class CreateChartTableComponent implements OnInit {
     let columnObj: TableDataHeader;
 
     do {
-      // tslint:disable-next-line: new-parens
-      columnObj = new function(): void {
-        this.id = (this.columnsValue?.value && this.columnsValue?.value[innerIndex]?.id)
-          ? this.columnsValue?.value[innerIndex]?.id
-          : innerIndex.toString();
-        this.columnDef = (this.columnsValue?.value && this.columnsValue?.value[innerIndex]?.columnDef)
-          ? this.columnsValue?.value[innerIndex]?.columnDef
-          : innerIndex.toString();
-        this.header = (this.columnsValue?.value && this.columnsValue?.value[innerIndex]?.header)
-          ? this.columnsValue?.value[innerIndex]?.header
-          : innerIndex.toString();
+      columnObj = {
+        id: innerIndex.toString(),
+        columnDef: innerIndex.toString(),
+        header: innerIndex.toString(),
       };
 
       columns.push(columnObj);
@@ -69,7 +65,21 @@ export class CreateChartTableComponent implements OnInit {
   }
 
   public generateHeaders(): string[] {
+    this.displayedColumnsChanges = this.columns;
+
     return this.columns?.map((col: { columnDef: string }) => col?.columnDef);
+  }
+
+  public generateRowHeaders(rows: number): TableDataHeader[] {
+    const generatedRows = [...Array(rows).keys()].map((_, i) => ({
+      id: this.displayedRowsChanges[i] ? this.displayedRowsChanges[i]?.id : (i + 1).toString(),
+      columnDef: this.displayedRowsChanges[i] ? this.displayedRowsChanges[i]?.columnDef : (i + 1).toString(),
+      header: this.displayedRowsChanges[i] ? this.displayedRowsChanges[i]?.header : (i + 1).toString(),
+    }));
+
+    this.displayedRowsChanges = generatedRows;
+
+    return generatedRows;
   }
 
   public generateData(tableColumns: number, tableRows: number): any[] {
@@ -102,11 +112,6 @@ export class CreateChartTableComponent implements OnInit {
     return tableData;
   }
 
-  public changeHeader(value: string, column: TableDataHeader): void {
-    column.header = value;
-    column.columnDef = value;
-  }
-
   public changeRow(inputValue: string, rowId: number): void {
     const tableDataValue: TableDataValue[] = this.tableData.find((parentItem) => parentItem.find((item) => item?.id === rowId));
     const tableDataRowValue: TableDataValue = tableDataValue.find((item) => item?.id === rowId);
@@ -114,9 +119,29 @@ export class CreateChartTableComponent implements OnInit {
     tableDataRowValue.value = inputValue;
   }
 
+  public changeHeader(inputValue: string, columnId: string): void {
+    const columnHeader = this.displayedColumnsChanges.find((item) => item?.id === columnId);
+
+    if (columnHeader) {
+      columnHeader.id = inputValue;
+      columnHeader.columnDef = inputValue;
+      columnHeader.header = inputValue;
+    }
+  }
+
+  public changeHeaderRow(inputValue: string, header: TableDataHeader): void {
+    const rowHeader = this.displayedRowsChanges.find((item) => item?.id === header?.id);
+
+    if (rowHeader) {
+      rowHeader.id = inputValue;
+      rowHeader.columnDef = inputValue;
+      rowHeader.header = inputValue;
+    }
+  }
+
   public collectData(): void {
-    console.log(this.tableData, this.columns);
-    this.lineChartOptions = mapToLineChartOptions(this.tableData, this.columns);
+    console.log(this.tableData, this.displayedRows, this.displayedColumnsChanges);
+    this.lineChartOptions = mapToLineChartOptions(this.tableData, this.displayedRows, this.displayedColumnsChanges);
     this.barChartOptions = mapToBarChartOptions(this.tableData, this.columns);
   }
 

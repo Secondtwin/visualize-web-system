@@ -13,4 +13,29 @@
       margin-right: 25px !important;
     }
   }
+
+  .table-wrapper {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .row-headers-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+  }
+
+  .header-input {
+    margin-right: 10px;
+  }
+
+  .column-headers-title {
+    white-space: nowrap;
+    padding-right: 120px;
+  }
+
+  .header-title-inputs {
+    display: flex;
+    flex-wrap: nowrap;
+  }
 }

@@ -30,35 +30,52 @@
 
 <br>
 
-<div class="table-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
+<!-- <div class="table-wrapper">
+  <div class="column-headers-title">
+    Column Headers
+  </div>
+  <div class="header-title-inputs">
+    <mat-form-field *ngFor="let colHeader of displayedColumns"
+      class="header-input">
+      <input matInput
+        value="{{colHeader?.header}}"
+        (change)="changeHeader($event?.target?.value, colHeader)"
+      >
+    </mat-form-field>
+  </div>
+</div> -->
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+<div class="table-wrapper">
+  <div class="row-headers-wrapper">
+    Row Headers
+    <mat-form-field *ngFor="let rowHeader of displayedRows">
+      <input matInput
+        value="{{rowHeader?.header}}"
+        (change)="changeHeaderRow($event?.target?.value, rowHeader)"
+      >
+    </mat-form-field>
+  </div>
 
-    <ng-container *ngFor="let column of columns; let colIndex = index"
-      [cdkColumnDef]="column.columnDef">
-      <mat-header-cell *cdkHeaderCellDef
-        class="form-input">
-        <mat-form-field>
-          <input matInput
-            value="{{column.header}}"
-            (change)="changeHeader($event?.target?.value, column)"
-          >
-        </mat-form-field>
-      </mat-header-cell>
-      <mat-cell *cdkCellDef="let row"
-        class="form-input">
-        <mat-form-field>
-          <input matInput
-            value="{{row[colIndex]?.value}}"
-            (change)="changeRow($event?.target?.value, row[colIndex]?.id)"
-          >
-        </mat-form-field>
-      </mat-cell>
-    </ng-container>
+  <div class="table-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-  </mat-table>
+      <ng-container *ngFor="let column of columns; let colIndex = index"
+        [cdkColumnDef]="column.columnDef">
+
+        <mat-cell *cdkCellDef="let row"
+          class="form-input">
+          <mat-form-field>
+            <input matInput
+              value="{{row[colIndex]?.value}}"
+              (change)="changeRow($event?.target?.value, row[colIndex]?.id)"
+            >
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+    </mat-table>
+  </div>
 </div>
 
 <br>
