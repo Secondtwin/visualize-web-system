@@ -1,8 +1,9 @@
+import { AppStorageService } from './../../app-storage.service';
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { BehaviorSubject } from 'rxjs';
 import { TableDataHeader, TableDataSource, TableDataValue } from 'src/app/shared/models';
-import { mapToLineChartOptions, mapToBarChartOptions } from 'src/app/shared/mappers';
+import { mapToLineChartOptions } from 'src/app/shared/mappers';
 import { EChartOption } from 'echarts';
 
 @Component({
@@ -12,9 +13,9 @@ import { EChartOption } from 'echarts';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateChartTableComponent implements OnInit {
-  @ViewChild('table') public matTable: MatTable<any>;
+  @ViewChild('table') public matTable: MatTable<TableDataValue[][]>;
 
-  private dataSubject: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  private dataSubject: BehaviorSubject<TableDataValue[][]> = new BehaviorSubject([]);
 
   public dataSource: TableDataSource;
   public displayedColumns: string[] = [];
@@ -26,9 +27,8 @@ export class CreateChartTableComponent implements OnInit {
   public columnSliderValue: number;
   public rowSliderValue: number;
   public lineChartOptions: EChartOption;
-  public barChartOptions: EChartOption;
 
-  public constructor() {
+  public constructor(private store: AppStorageService) {
     this.dataSource = new TableDataSource(this.dataSubject);
   }
 
@@ -82,7 +82,7 @@ export class CreateChartTableComponent implements OnInit {
     return generatedRows;
   }
 
-  public generateData(tableColumns: number, tableRows: number): any[] {
+  public generateData(tableColumns: number, tableRows: number): TableDataValue[][] {
     let innerIndex = 1;
     let outerIndex = 0;
     let value: number;
@@ -141,35 +141,9 @@ export class CreateChartTableComponent implements OnInit {
 
   public collectData(): void {
     console.log(this.tableData, this.displayedRows, this.displayedColumnsChanges);
+    this.store.setTableData(this.tableData);
+    this.store.setRowHeaders(this.displayedRows);
+    this.store.setColumnHeaders(this.displayedColumnsChanges);
     this.lineChartOptions = mapToLineChartOptions(this.tableData, this.displayedRows, this.displayedColumnsChanges);
-    this.barChartOptions = mapToBarChartOptions(this.tableData, this.columns);
-  }
-
-  /**
-   * Chart tooltip formatter.
-   * @param parameters - chart data
-   * @returns html string
-   */
-  public tooltipLineChartFormatter(parameters: EChartOption.Tooltip.Format): string {
-    const [{ name }] = parameters;
-
-    return `
-    <div>
-      <span>
-        <b>${name}</b>
-      </span>
-      <br>
-      <div>
-      <span>
-        Data:
-      </span>
-      ${parameters.map(({ data, color }) => `
-        <span style="color:${color};">
-          ${data}
-        </span>
-      `)}
-      </div>
-    </div>
-    `;
   }
 }

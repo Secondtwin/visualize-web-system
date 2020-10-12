@@ -7,6 +7,7 @@ export function mapToLineChartOptions(
   columnHeaders: TableDataHeader[],
 ): EChartOption {
   const legendData = rowHeaders?.map((item) => item?.header);
+  const xAxisData = columnHeaders?.map((item) => item?.header);
 
   return {
     title: {
@@ -16,7 +17,7 @@ export function mapToLineChartOptions(
       data: legendData,
     },
     xAxis: {
-      data: legendData,
+      data: xAxisData,
     },
     series: tableData?.map((column, i) => ({
       name: legendData[i],
