@@ -19,9 +19,12 @@ import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { ChartExamplesComponent } from './pages/chart-examples/chart-examples.component';
 import { CreateChartComponent } from './pages/create-chart/create-chart.component';
+import { CreateChartStepperComponent } from './pages/create-chart-stepper/create-chart-stepper.component';
+import { DisplayChartsComponent } from './pages/display-charts/display-charts.component';
 import {
   BarChartComponent,
   LineChartComponent,
@@ -49,6 +52,7 @@ import { FormsModule } from '@angular/forms';
     MatSliderModule,
     FormsModule,
     MatInputModule,
+    MatStepperModule,
   ],
   declarations: [
     AppComponent,
@@ -59,6 +63,8 @@ import { FormsModule } from '@angular/forms';
     ScatterChartComponent,
     CreateChartComponent,
     CreateChartTableComponent,
+    CreateChartStepperComponent,
+    DisplayChartsComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

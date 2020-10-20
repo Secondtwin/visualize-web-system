@@ -1,0 +1,49 @@
+<div class="page-title">CREATE CHART</div>
+
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Fill out chart data</ng-template>
+    <app-create-chart-table
+      [resetData]="resetData"
+      (initNextStep)="initNextStep()"
+    ></app-create-chart-table>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Check Results</ng-template>
+    <app-display-charts
+      [displayCharts]="displayCharts"
+    ></app-display-charts>
+    <div>
+      <button
+        mat-raised-button
+        matStepperPrevious
+        color="primary">
+        Back
+      </button>
+      <button
+        mat-raised-button
+        matStepperNext
+        color="primary">
+        Next
+      </button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button
+        mat-raised-button
+        matStepperPrevious
+        color="primary">
+        Back
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="resetStepper()">
+        Reset
+      </button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

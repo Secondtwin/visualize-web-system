@@ -106,7 +106,6 @@ export class ChartExamplesComponent {
     }]
   };
 
-
   /**
    * Chart tooltip formatter.
    * @param parameters - chart data

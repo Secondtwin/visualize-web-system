@@ -1,0 +1,35 @@
+<ng-container *ngIf="lineChartOptions && !!displayCharts?.isValueChanged">
+  <mat-card class="chart-wrapper">
+    <app-line-chart
+      [chartData]="lineChartOptions"
+      [tooltipFormatter]="tooltipLineChartFormatter"
+    ></app-line-chart>
+  </mat-card>
+</ng-container>
+<ng-container *ngIf="barChartOption && !!displayCharts?.isValueChanged">
+  <mat-card class="chart-wrapper">
+    <mat-card-subtitle>Note: Takes maximum value from data row</mat-card-subtitle>
+    <app-bar-chart
+      [chartData]="barChartOption"
+      [tooltipFormatter]="tooltipBarChartFormatter"
+    ></app-bar-chart>
+  </mat-card>
+</ng-container>
+<ng-container *ngIf="pieChartOption && !!displayCharts?.isValueChanged">
+  <mat-card class="chart-wrapper">
+    <mat-card-subtitle>Note: Takes maximum value from data row</mat-card-subtitle>
+    <app-pie-chart
+      [chartData]="pieChartOption"
+      [tooltipFormatter]="tooltipBarChartFormatter"
+    ></app-pie-chart>
+  </mat-card>
+</ng-container>
+<ng-container *ngIf="scatterChartOption && !!displayCharts?.isValueChanged">
+  <mat-card class="chart-wrapper">
+    <mat-card-subtitle>Note: Takes minimum and maximum values from data row</mat-card-subtitle>
+    <app-scatter-chart
+      [chartData]="scatterChartOption"
+      [tooltipFormatter]="tooltipScatterChartFormatter"
+    ></app-scatter-chart>
+  </mat-card>
+</ng-container>

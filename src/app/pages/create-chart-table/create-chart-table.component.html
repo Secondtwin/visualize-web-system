@@ -85,12 +85,3 @@
   (click)=collectData()>
   Display Data
 </button>
-
-<ng-container *ngIf="lineChartOptions">
-  <mat-card class="chart-examples">
-    <app-line-chart
-      [chartData]="lineChartOptions"
-      [tooltipFormatter]="tooltipLineChartFormatter"
-    ></app-line-chart>
-  </mat-card>
-</ng-container>

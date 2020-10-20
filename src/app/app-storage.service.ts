@@ -1,5 +1,5 @@
 import { TableDataHeader, TableDataValue } from './shared/models';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,17 +9,35 @@ export class AppStorageService {
   private readonly tableData$: BehaviorSubject<TableDataValue[][]> = new BehaviorSubject(undefined);
   private readonly rowHeaders$: BehaviorSubject<TableDataHeader[]> = new BehaviorSubject([]);
   private readonly columnHeaders$: BehaviorSubject<TableDataHeader[]> = new BehaviorSubject([]);
+  private readonly columnSliderValue$: BehaviorSubject<number> = new BehaviorSubject(1);
+  private readonly rowSliderValue$: BehaviorSubject<number> = new BehaviorSubject(1);
 
-  public getTableData(): Observable<TableDataValue[][]> {
-    return this.tableData$;
+  public getColumnSliderValue(): number {
+    return this.columnSliderValue$?.value;
   }
 
-  public getRowHeaders(): Observable<TableDataHeader[]> {
-    return this.rowHeaders$;
+  public getRowSliderValue(): number {
+    return this.rowSliderValue$?.value;
   }
 
-  public getColumnHeaders(): Observable<TableDataHeader[]> {
-    return this.columnHeaders$;
+  public getTableData(): TableDataValue[][] {
+    return this.tableData$?.value;
+  }
+
+  public getRowHeaders(): TableDataHeader[] {
+    return this.rowHeaders$?.value;
+  }
+
+  public getColumnHeaders(): TableDataHeader[] {
+    return this.columnHeaders$?.value;
+  }
+
+  public setColumnSliderValue(value: number): void {
+    this.columnSliderValue$?.next(value);
+  }
+
+  public setRowSliderValue(value: number): void {
+    this.rowSliderValue$?.next(value);
   }
 
   public setTableData(value: TableDataValue[][]): void {
