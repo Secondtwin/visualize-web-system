@@ -13,6 +13,7 @@ import { ValueChanges } from 'src/app/shared/models';
 export class DisplayChartsComponent {
   @Input() public set displayCharts(value: ValueChanges) {
     this.displayChartsValue = value;
+    this.selectedChart = this.store.getSelectedChartType();
     this.lineChartOptions = mapToLineChartOptions(
       this.store.getTableData(),
       this.store.getRowHeaders(),
@@ -42,6 +43,7 @@ export class DisplayChartsComponent {
   public barChartOption: EChartOption;
   public scatterChartOption: EChartOption;
   public pieChartOption: EChartOption;
+  public selectedChart: string;
 
   private displayChartsValue: ValueChanges;
 

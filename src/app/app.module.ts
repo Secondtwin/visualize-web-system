@@ -1,3 +1,5 @@
+import { MyDashboardComponent } from './pages/my-dashboard/my-dashboard.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CreateChartTableComponent } from './pages/create-chart-table/create-chart-table.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,11 +22,13 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { ChartExamplesComponent } from './pages/chart-examples/chart-examples.component';
 import { CreateChartComponent } from './pages/create-chart/create-chart.component';
 import { CreateChartStepperComponent } from './pages/create-chart-stepper/create-chart-stepper.component';
 import { DisplayChartsComponent } from './pages/display-charts/display-charts.component';
+import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import {
   BarChartComponent,
   LineChartComponent,
@@ -53,6 +57,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MatInputModule,
     MatStepperModule,
+    MatRadioModule,
   ],
   declarations: [
     AppComponent,
@@ -65,6 +70,9 @@ import { FormsModule } from '@angular/forms';
     CreateChartTableComponent,
     CreateChartStepperComponent,
     DisplayChartsComponent,
+    HomePageComponent,
+    MyDashboardComponent,
+    CreateAccountComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

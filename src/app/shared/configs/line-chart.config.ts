@@ -148,6 +148,20 @@ export function getChartConfig(
       top: 30,
       left: 0,
     },
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7'
+        },
+        saveAsImage: {
+          title: 'Save as image',
+        },
+      }
+    },
   };
 }
 
@@ -167,7 +181,6 @@ export function getMultiAxisChartConfig(
     legend,
   }: EChartOption<EChartOption.SeriesLine>,
 ): EChartOption<EChartOption.SeriesLine> {
-
   return {
     grid,
     tooltip: {
@@ -264,6 +277,20 @@ export function getMultiAxisChartConfig(
       ...legend,
       top: 30,
       left: 0,
+    },
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7'
+        },
+        saveAsImage: {
+          title: 'Save as image',
+        },
+      }
     },
   };
 }

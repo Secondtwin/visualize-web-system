@@ -90,5 +90,19 @@ export function getChartConfig(
       ...item,
       symbolSize: 20,
     })),
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7'
+        },
+        saveAsImage: {
+          title: 'Save as image',
+        },
+      }
+    },
   };
 }

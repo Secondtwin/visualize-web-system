@@ -14,6 +14,8 @@ export class CreateChartStepperComponent {
 
   public displayCharts: ValueChanges;
   public resetData: ValueChanges;
+  public isChartTypeSelected = false;
+  public selectedChartType: string;
 
   public constructor(private store: AppStorageService) {}
 
@@ -26,16 +28,34 @@ export class CreateChartStepperComponent {
   }
 
   /**
+   * Set selected Chart type.
+   * @param radioButtonValue selected chart type
+   */
+  public setSelectedChartType(radioButtonValue: string): void {
+    this.isChartTypeSelected = true;
+    this.store.setSelectedChartType(radioButtonValue);
+  }
+
+  /**
+   * Stepper selection changed.
+   */
+  public stepperSelectionChange(): void {
+    this.selectedChartType = this.store.getSelectedChartType();
+  }
+
+  /**
    * Resets stepper.
    */
   public resetStepper(): void {
-    this.stepper.reset();
     this.displayCharts = { isValueChanged: false };
     this.resetData = { isValueChanged: true };
+    this.isChartTypeSelected = false;
     this.store.setTableData([]);
     this.store.setRowHeaders([]);
     this.store.setColumnHeaders([]);
     this.store.setColumnSliderValue(1);
     this.store.setRowSliderValue(1);
+    this.store.setSelectedChartType(undefined);
+    this.stepper.reset();
   }
 }

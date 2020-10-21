@@ -56,8 +56,22 @@ export function getChartConfig(
       itemStyle: {
         shadowBlur: 10,
         shadowOffsetX: 0,
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
+        shadowColor: 'rgba(0, 0, 0, 0.5)',
+      },
+    },
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7'
+        },
+        saveAsImage: {
+          title: 'Save as image',
+        },
       }
-    }
+    },
   };
 }

@@ -11,6 +11,7 @@ export class AppStorageService {
   private readonly columnHeaders$: BehaviorSubject<TableDataHeader[]> = new BehaviorSubject([]);
   private readonly columnSliderValue$: BehaviorSubject<number> = new BehaviorSubject(1);
   private readonly rowSliderValue$: BehaviorSubject<number> = new BehaviorSubject(1);
+  private readonly selectedChartType$: BehaviorSubject<string> = new BehaviorSubject(undefined);
 
   public getColumnSliderValue(): number {
     return this.columnSliderValue$?.value;
@@ -50,5 +51,13 @@ export class AppStorageService {
 
   public setColumnHeaders(value: TableDataHeader[]): void {
     this.columnHeaders$.next(value);
+  }
+
+  public getSelectedChartType(): string {
+    return this.selectedChartType$?.value;
+  }
+
+  public setSelectedChartType(value: string): void {
+    this.selectedChartType$?.next(value);
   }
 }

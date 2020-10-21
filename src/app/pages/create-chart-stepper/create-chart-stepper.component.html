@@ -1,6 +1,48 @@
 <div class="page-title">CREATE CHART</div>
 
-<mat-vertical-stepper [linear]="true" #stepper>
+<mat-vertical-stepper
+  #stepper
+  class="stepper-bg"
+  [linear]="true"
+  (selectionChange)="stepperSelectionChange()">
+  <mat-step>
+    <ng-template matStepLabel>Choose chart type</ng-template>
+    <mat-radio-group [(ngModel)]="selectedChartType">
+      <mat-radio-button
+        class="radio-button-margin"
+        value="LineChart"
+        (change)="setSelectedChartType($event.value)">
+        Line Chart
+      </mat-radio-button>
+      <mat-radio-button
+        class="radio-button-margin"
+        value="BarChart"
+        (change)="setSelectedChartType($event.value)">
+        Bar Chart
+      </mat-radio-button>
+      <mat-radio-button
+        class="radio-button-margin"
+        value="PieChart"
+        (change)="setSelectedChartType($event.value)">
+        Pie Chart
+      </mat-radio-button>
+      <mat-radio-button
+        class="radio-button-margin"
+        value="ScatterChart"
+        (change)="setSelectedChartType($event.value)">
+        Scatter Chart
+      </mat-radio-button>
+    </mat-radio-group>
+    <div>
+      <button
+        mat-raised-button
+        matStepperNext
+        color="primary"
+        [disabled]="!isChartTypeSelected">
+        Next
+      </button>
+    </div>
+  </mat-step>
   <mat-step>
     <ng-template matStepLabel>Fill out chart data</ng-template>
     <app-create-chart-table
