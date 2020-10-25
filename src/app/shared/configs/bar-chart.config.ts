@@ -24,7 +24,7 @@ export function getChartConfig(
     ? (xAxis as EChartOption.XAxis).axisLabel
     : { rotate: '' };
 
-  const [top, right, bottom, left] = '50 10 30 30'.split(' ');
+  const [top, right, bottom, left] = '50 10 30 50'.split(' ');
 
   return {
     grid: {
@@ -33,7 +33,12 @@ export function getChartConfig(
       bottom,
       left,
     },
-    title,
+    title: {
+      ...title,
+      textStyle: {
+        fontFamily: 'Montserrat',
+      },
+    },
     color: theme?.color,
     tooltip: {
       trigger: 'item',
@@ -50,6 +55,7 @@ export function getChartConfig(
         color: theme?.textColor,
         fontSize: 12,
         fontWeight: 700,
+        fontFamily: 'Montserrat',
       },
       backgroundColor: theme?.markTextColor,
       borderColor: theme?.markTextColor,
@@ -74,7 +80,9 @@ export function getChartConfig(
             show: checkForFalse('true'),
             rotate: xAxisLabel.rotate || 0,
             color: theme?.textColor,
-            fontSize: 10,
+            fontSize: 12,
+            fontWeight: 700,
+            fontFamily: 'Montserrat',
           },
           axisTick: {
             show: false,
@@ -100,14 +108,18 @@ export function getChartConfig(
         axisLabel: {
           show: true,
           color: theme?.textColor,
-          fontSize: 10,
+          fontSize: 12,
+          fontWeight: 700,
+          fontFamily: 'Montserrat',
           formatter: (value: number) => Math.abs(value) > MIN_VALUE
             ? (Math.sign(value) * (+(Math.abs(value) / VALUE_DIVIDER).toFixed())).toString() + 'K'
             : Math.sign(value) * Math.abs(value),
         },
         nameTextStyle: {
           color: theme?.textColor,
-          fontSize: 10,
+          fontSize: 12,
+          fontWeight: 700,
+          fontFamily: 'Montserrat',
         },
         axisTick: {
           show: false,
@@ -129,10 +141,8 @@ export function getChartConfig(
         barCategoryGap,
       } = seriesItem;
 
-      const symbolProportions = '';
-      const symbolOffsets = '';
-
       return {
+        ...seriesItem,
         type: 'bar',
         name,
         hoverAnimation: checkForFalse('false'),
@@ -143,9 +153,6 @@ export function getChartConfig(
         barGap,
         zlevel: 0,
         barCategoryGap,
-        symbol: 'circle',
-        symbolSize: symbolProportions,
-        symbolOffset: symbolOffsets,
         animationDelayUpdate: 0,
         animationEasingUpdate: 'cubicOut',
         animationDurationUpdate: 1000,

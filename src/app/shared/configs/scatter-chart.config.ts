@@ -28,7 +28,13 @@ export function getChartConfig(
       bottom,
       left,
     },
-    title,
+    title: {
+      ...title,
+      textStyle: {
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
+      },
+    },
     color: theme?.color,
     tooltip: {
       trigger: 'item',
@@ -40,6 +46,7 @@ export function getChartConfig(
         color: theme?.textColor,
         fontSize: 12,
         fontWeight: 700,
+        fontFamily: 'Montserrat',
       },
       backgroundColor: theme?.markTextColor,
       borderColor: theme?.markTextColor,
@@ -51,12 +58,16 @@ export function getChartConfig(
       nameGap: 20,
       nameLocation: 'center',
       nameTextStyle: {
-        color: '#999',
+        color: theme?.textColor,
         fontSize: 12,
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
       },
       axisLabel: {
-        color: '#999',
-        fontSize: 10,
+        color: theme?.textColor,
+        fontSize: 12,
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
         ...xAxisLabel,
       },
       axisTick: {
@@ -71,12 +82,16 @@ export function getChartConfig(
       nameGap: 20,
       nameLocation: 'center',
       nameTextStyle: {
-        color: '#999',
+        color: theme?.textColor,
         fontSize: 12,
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
       },
       axisLabel: {
-        color: '#999',
-        fontSize: 10,
+        color: theme?.textColor,
+        fontSize: 12,
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
         ...yAxisLabel,
       },
       axisTick: {

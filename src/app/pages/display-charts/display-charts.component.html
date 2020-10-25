@@ -1,36 +1,116 @@
 <div *ngIf="!selectedChart">Please choose chart type on 1st step.</div>
-<ng-container *ngIf="lineChartOptions && !!displayCharts?.isValueChanged && selectedChart === 'LineChart'">
-  <mat-card class="chart-wrapper">
-    <app-line-chart
-      [chartData]="lineChartOptions"
-      [tooltipFormatter]="tooltipLineChartFormatter"
-    ></app-line-chart>
-  </mat-card>
-</ng-container>
-<ng-container *ngIf="barChartOption && !!displayCharts?.isValueChanged && selectedChart === 'BarChart'">
-  <mat-card class="chart-wrapper">
-    <mat-card-subtitle>Note: Takes maximum value from data row</mat-card-subtitle>
-    <app-bar-chart
-      [chartData]="barChartOption"
-      [tooltipFormatter]="tooltipBarChartFormatter"
-    ></app-bar-chart>
-  </mat-card>
-</ng-container>
-<ng-container *ngIf="pieChartOption && !!displayCharts?.isValueChanged && selectedChart === 'PieChart'">
-  <mat-card class="chart-wrapper">
-    <mat-card-subtitle>Note: Takes maximum value from data row</mat-card-subtitle>
-    <app-pie-chart
-      [chartData]="pieChartOption"
-      [tooltipFormatter]="tooltipBarChartFormatter"
-    ></app-pie-chart>
-  </mat-card>
-</ng-container>
-<ng-container *ngIf="scatterChartOption && !!displayCharts?.isValueChanged && selectedChart === 'ScatterChart'">
-  <mat-card class="chart-wrapper">
-    <mat-card-subtitle>Note: Takes minimum and maximum values from data row</mat-card-subtitle>
-    <app-scatter-chart
-      [chartData]="scatterChartOption"
-      [tooltipFormatter]="tooltipScatterChartFormatter"
-    ></app-scatter-chart>
-  </mat-card>
-</ng-container>
+<div class="displayed-charts-wrapper">
+  <div *ngIf="false"
+    class="options-wrapper">
+    <div class="change-options-label">
+      Change Options:
+    </div>
+
+    <form *ngIf="pieChartOption && !!displayCharts?.isValueChanged && selectedChart === 'PieChart'">
+      <div class="form-label">Circle Radius:</div>
+      <mat-form-field>
+        <mat-label>Enter Circle Radius</mat-label>
+        <input matInput
+          type="number"
+          min="0"
+          max="100">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter Inner Circle Radius</mat-label>
+        <input matInput
+          type="number"
+          min="0"
+          max="100">
+      </mat-form-field>
+      <div class="form-label">Show Outer Label:</div>
+      <mat-radio-group>
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+    </form>
+
+    <button mat-raised-button
+      color="primary"
+      (click)="collectFormData()">
+      Apply Changes
+    </button>
+  </div>
+  <div class="displayed-charts">
+    <ng-container *ngIf="lineChartOptions && !!displayCharts?.isValueChanged && selectedChart === 'LineChart'">
+      <mat-card class="chart-wrapper">
+        <app-line-chart
+          [chartData]="lineChartOptions"
+          [tooltipFormatter]="tooltipLineChartFormatter"
+        ></app-line-chart>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="lineChartStackedOptions && !!displayCharts?.isValueChanged && selectedChart === 'LineChart'">
+      <mat-card class="chart-wrapper">
+        <app-line-chart
+          [chartData]="lineChartStackedOptions"
+          [tooltipFormatter]="tooltipLineChartFormatter"
+        ></app-line-chart>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="lineAreaChartOptions && !!displayCharts?.isValueChanged && selectedChart === 'LineChart'">
+      <mat-card class="chart-wrapper">
+        <app-line-chart
+          [chartData]="lineAreaChartOptions"
+          [tooltipFormatter]="tooltipLineChartFormatter"
+        ></app-line-chart>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="barChartOption && !!displayCharts?.isValueChanged && selectedChart === 'BarChart'">
+      <mat-card class="chart-wrapper">
+        <mat-card-subtitle>Note: Takes maximum value from data row</mat-card-subtitle>
+        <app-bar-chart
+          [chartData]="barChartOption"
+          [tooltipFormatter]="tooltipBarChartFormatter"
+        ></app-bar-chart>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="barChartStackedOption && !!displayCharts?.isValueChanged && selectedChart === 'BarChart'">
+      <mat-card class="chart-wrapper">
+        <app-bar-chart
+          [chartData]="barChartStackedOption"
+          [tooltipFormatter]="tooltipBarChartFormatter"
+        ></app-bar-chart>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="pieChartOption && !!displayCharts?.isValueChanged && selectedChart === 'PieChart'">
+      <mat-card class="chart-wrapper">
+        <mat-card-subtitle>Note: Takes maximum value from data row</mat-card-subtitle>
+        <app-pie-chart
+          [chartData]="pieChartOption"
+          [tooltipFormatter]="tooltipBarChartFormatter"
+        ></app-pie-chart>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="donutChartOption && !!displayCharts?.isValueChanged && selectedChart === 'PieChart'">
+      <mat-card class="chart-wrapper">
+        <mat-card-subtitle>Note: Takes maximum value from data row</mat-card-subtitle>
+        <app-pie-chart
+          [chartData]="donutChartOption"
+          [tooltipFormatter]="tooltipBarChartFormatter"
+        ></app-pie-chart>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="scatterChartOption && !!displayCharts?.isValueChanged && selectedChart === 'ScatterChart'">
+      <mat-card class="chart-wrapper">
+        <mat-card-subtitle>Note: Takes minimum and maximum values from data row</mat-card-subtitle>
+        <app-scatter-chart
+          [chartData]="scatterChartOption"
+          [tooltipFormatter]="tooltipScatterChartFormatter"
+        ></app-scatter-chart>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>

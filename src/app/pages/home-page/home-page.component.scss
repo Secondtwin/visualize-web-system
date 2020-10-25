@@ -1,0 +1,53 @@
+:host {
+  img {
+    height: 800px;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .centered-text {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+
+    div {
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 56px;
+    }
+
+    .page-subtitle {
+      font-size: 22px;
+    }
+  }
+
+  .page-desc {
+    position: absolute;
+    top: 80%;
+    right: 5%;
+    width: 500px;
+    font-size: 30px;
+    line-height: 35px;
+  }
+
+  .get-started-btn {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+    button {
+      font-size: 40px;
+      padding: 20px;
+      font-family: inherit;
+    }
+  }
+}

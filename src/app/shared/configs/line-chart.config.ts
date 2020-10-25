@@ -20,12 +20,18 @@ export function getChartConfig(
 ): EChartOption<EChartOption.SeriesLine> {
   const xAxisData = xAxis as EChartOption.XAxis;
   const yAxisData = yAxis as EChartOption.YAxis;
-  const [top, right, bottom, left] = '70 10 40 40'.split(' ');
+  const [top, right, bottom, left] = '70 10 40 50'.split(' ');
   const defaultSymbolSize = 10;
 
   return {
     grid: grid || { top, right, bottom, left },
-    title,
+    title: {
+      ...title,
+      textStyle: {
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
+      },
+    },
     color: theme?.color,
     tooltip: {
       trigger: 'axis',
@@ -40,7 +46,8 @@ export function getChartConfig(
       textStyle: {
         color: theme?.textColor,
         fontSize: 12,
-        fontWeight: 'bold',
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
       },
       backgroundColor: theme?.markTextColor,
       borderColor: theme?.markTextColor,
@@ -57,7 +64,9 @@ export function getChartConfig(
         data: xAxisData.data,
         silent: false,
         nameTextStyle: {
-          fontSize: 10,
+          fontSize: 12,
+          fontWeight: 700,
+          fontFamily: 'Montserrat',
           color: theme?.textColor,
         },
         axisLine: {
@@ -70,7 +79,9 @@ export function getChartConfig(
           ...xAxisData.axisLabel,
           show: getShowableValue(yAxisData.axisLabel, true),
           color: theme?.textColor,
-          fontSize: 10,
+          fontSize: 12,
+          fontWeight: 700,
+          fontFamily: 'Montserrat',
         },
         axisTick: {
           show: false,
@@ -102,11 +113,15 @@ export function getChartConfig(
       axisLabel: {
         ...(yAxisData.axisLabel || {}),
         show: getShowableValue(yAxisData.axisLabel, true),
-        fontSize: 10,
+        fontSize: 12,
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
         color: theme?.textColor,
       },
       nameTextStyle: {
-        fontSize: 10,
+        fontSize: 12,
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
         color: theme?.textColor,
       },
       axisTick: {
@@ -123,7 +138,8 @@ export function getChartConfig(
     series: series.map(({
       name,
       data,
-      symbol = 'circle',
+      stack,
+      symbol,
       symbolSize,
       itemStyle,
       lineStyle = { width: 3 },
@@ -134,6 +150,7 @@ export function getChartConfig(
       type: 'line',
       name,
       data,
+      stack,
       symbol,
       showAllSymbol: true,
       symbolSize: symbolSize || defaultSymbolSize,
@@ -147,6 +164,10 @@ export function getChartConfig(
       ...legend,
       top: 30,
       left: 0,
+      textStyle: {
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
+      },
     },
     toolbox: {
       show: true,
@@ -155,7 +176,7 @@ export function getChartConfig(
           title: 'See the displayed data',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
-          buttonColor: '#673ab7'
+          buttonColor: '#673ab7',
         },
         saveAsImage: {
           title: 'Save as image',

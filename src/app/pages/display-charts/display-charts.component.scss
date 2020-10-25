@@ -1,5 +1,43 @@
 :host {
   .chart-wrapper {
-    margin-top: 15px;
+    margin: 15px 15px 0 30px;
+  }
+
+  .displayed-charts-wrapper {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .displayed-charts {
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .options-wrapper {
+    width: 200px;
+
+    .change-options-label {
+      margin: 15px 0;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  .form-label {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px 0;
+  }
+
+  .radio-button-margin {
+    margin: 15px 10px;
+  }
+
+  ::ng-deep {
+    .mat-button-wrapper,
+    .mat-radio-label-content {
+      font-family: 'Montserrat', sans-serif;
+    }
   }
 }

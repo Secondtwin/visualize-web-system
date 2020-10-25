@@ -22,6 +22,44 @@ export class ChartExamplesComponent {
       {
         name: 'Mon',
         type: 'line',
+        data: [120, 132, 101, 134, 90, 230, 210]
+      },
+      {
+        name: 'Tue',
+        type: 'line',
+        data: [220, 182, 191, 234, 290, 330, 310]
+      },
+      {
+        name: 'Wed',
+        type: 'line',
+        data: [150, 232, 201, 154, 190, 330, 410]
+      },
+      {
+        name: 'Thu',
+        type: 'line',
+        data: [320, 332, 301, 334, 390, 330, 320]
+      },
+      {
+        name: 'Fri',
+        type: 'line',
+        data: [820, 932, 901, 934, 1290, 1330, 1320]
+      }
+    ]
+  };
+  public lineChartStackedOption = {
+    title: {
+      text: 'Line Chart Stacked Example'
+    },
+    legend: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+    },
+    xAxis: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+    },
+    series: [
+      {
+        name: 'Mon',
+        type: 'line',
         stack: 'week',
         data: [120, 132, 101, 134, 90, 230, 210]
       },
@@ -51,6 +89,64 @@ export class ChartExamplesComponent {
       }
     ]
   };
+  public lineAreaChartOption = {
+    title: {
+      text: 'Line Area Chart Stacked Example'
+    },
+    legend: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+    },
+    xAxis: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+    },
+    series: [
+      {
+        name: 'Mon',
+        type: 'line',
+        stack: 'week',
+        areaStyle: {
+          opacity: 0.5,
+        },
+        data: [120, 132, 101, 134, 90, 230, 210]
+      },
+      {
+        name: 'Tue',
+        type: 'line',
+        stack: 'week',
+        areaStyle: {
+          opacity: 0.5,
+        },
+        data: [220, 182, 191, 234, 290, 330, 310]
+      },
+      {
+        name: 'Wed',
+        type: 'line',
+        stack: 'week',
+        areaStyle: {
+          opacity: 0.5,
+        },
+        data: [150, 232, 201, 154, 190, 330, 410]
+      },
+      {
+        name: 'Thu',
+        type: 'line',
+        stack: 'week',
+        areaStyle: {
+          opacity: 0.5,
+        },
+        data: [320, 332, 301, 334, 390, 330, 320]
+      },
+      {
+        name: 'Fri',
+        type: 'line',
+        stack: 'week',
+        areaStyle: {
+          opacity: 0.5,
+        },
+        data: [820, 932, 901, 934, 1290, 1330, 1320]
+      }
+    ]
+  };
   public barChartOption = {
     title: {
       text: 'Bar Chart Example'
@@ -63,6 +159,31 @@ export class ChartExamplesComponent {
       type: 'bar',
     }]
   };
+  public barChartStackedOption = {
+    title: {
+      text: 'Bar Chart Stacked Example'
+    },
+    xAxis: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    series: [
+      {
+        type: 'bar',
+        stack: 'barChart',
+        data: [120, 200, 150, 80, 70, 110, 130],
+      },
+      {
+        type: 'bar',
+        stack: 'barChart',
+        data: [125, 210, 165, 30, 40, 105, 90],
+      },
+      {
+        type: 'bar',
+        stack: 'barChart',
+        data: [40, 50, 30, 30, 50, 60, 100],
+      }
+    ],
+  };
   public pieChartOption = {
     title: {
       text: 'Pie Chart Example'
@@ -74,6 +195,41 @@ export class ChartExamplesComponent {
       {
         name: 'pieChart',
         type: 'pie',
+        data: [
+          { value: 335, name: 'Mon' },
+          { value: 310, name: 'Tue' },
+          { value: 234, name: 'Wed' },
+          { value: 135, name: 'Thu' },
+          { value: 1548, name: 'Fri' }
+        ],
+      }
+    ]
+  };
+  public donutChartOption = {
+    title: {
+      text: 'Pie Chart Example With Empty Center'
+    },
+    legend: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+    },
+    series: [
+      {
+        name: 'pieChart',
+        type: 'pie',
+        radius: ['50%', '70%'],
+        label: {
+          show: false,
+          position: 'center',
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 20,
+          },
+        },
+        labelLine: {
+          show: false,
+        },
         data: [
           { value: 335, name: 'Mon' },
           { value: 310, name: 'Tue' },

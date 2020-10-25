@@ -8,10 +8,10 @@
       ></app-bar-chart>
     </mat-card>
     <mat-card class="chart-examples">
-      <app-scatter-chart
-        [chartData]="scatterChartOption"
-        [tooltipFormatter]="tooltipScatterChartFormatter"
-      ></app-scatter-chart>
+      <app-bar-chart
+        [chartData]="barChartStackedOption"
+        [tooltipFormatter]="tooltipBarChartFormatter"
+      ></app-bar-chart>
     </mat-card>
   </div>
   <div class="chart-examples-wrapper">
@@ -22,10 +22,38 @@
       ></app-pie-chart>
     </mat-card>
     <mat-card class="chart-examples">
+      <app-pie-chart
+        [chartData]="donutChartOption"
+        [tooltipFormatter]="tooltipBarChartFormatter"
+      ></app-pie-chart>
+    </mat-card>
+  </div>
+  <div class="chart-examples-wrapper">
+    <mat-card class="chart-examples">
       <app-line-chart
         [chartData]="lineChartOption"
         [tooltipFormatter]="tooltipLineChartFormatter"
       ></app-line-chart>
+    </mat-card>
+    <mat-card class="chart-examples">
+      <app-line-chart
+        [chartData]="lineChartStackedOption"
+        [tooltipFormatter]="tooltipLineChartFormatter"
+      ></app-line-chart>
+    </mat-card>
+  </div>
+  <div class="chart-examples-wrapper">
+    <mat-card class="chart-examples">
+      <app-line-chart
+        [chartData]="lineAreaChartOption"
+        [tooltipFormatter]="tooltipLineChartFormatter"
+      ></app-line-chart>
+    </mat-card>
+    <mat-card class="chart-examples">
+      <app-scatter-chart
+        [chartData]="scatterChartOption"
+        [tooltipFormatter]="tooltipScatterChartFormatter"
+      ></app-scatter-chart>
     </mat-card>
   </div>
 </div>

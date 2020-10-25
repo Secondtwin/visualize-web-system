@@ -8,7 +8,18 @@
     margin-top: 15px;
   }
 
-  .stepper-bg {
-    background: #eeeeee;
+  .chart-stepper-wrapper {
+    padding: 25px;
+    background: #ffffff;
+  }
+
+  .stepper-bg::ng-deep {
+    font-family: 'Montserrat', sans-serif !important;
+  }
+
+  ::ng-deep {
+    .mat-vertical-content {
+      overflow-x: auto;
+    }
   }
 }

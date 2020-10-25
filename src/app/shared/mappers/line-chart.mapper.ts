@@ -22,7 +22,6 @@ export function mapToLineChartOptions(
     series: tableData?.map((column, i) => ({
       name: legendData[i],
       type: 'line',
-      stack: 'lineChart',
       data: column?.map((row) => row?.value),
     })),
   };

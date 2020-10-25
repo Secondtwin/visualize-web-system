@@ -15,6 +15,15 @@ export function mapToPieChartOptions(
     },
     series: [{
       type: 'pie',
+      radius: '75%',
+      label: {
+        position: 'outer',
+        alignTo: 'labelLine',
+        distanceToLabelLine: 5,
+      },
+      labelLine : {
+        show: true,
+      },
       data: tableData?.map((column, i) => ({
         value: Math.max(...column?.map((row) => Number.parseFloat(row?.value))),
         name: rowHeaders[i]?.header,

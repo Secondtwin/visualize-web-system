@@ -13,13 +13,24 @@ export function getChartConfig(
 ): EChartOption<EChartOption.SeriesPie> {
   return {
     backgroundColor: 'transparent',
-    title,
+    title: {
+      ...title,
+      textStyle: {
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
+      },
+    },
     color: theme?.color,
     legend: {
       ...legend,
       orient: 'vertical',
       top: 30,
       left: 0,
+      textStyle: {
+        fontSize: 12,
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
+      },
     },
     tooltip: {
       trigger: 'item',
@@ -28,6 +39,7 @@ export function getChartConfig(
         color: theme?.textColor,
         fontSize: 12,
         fontWeight: 700,
+        fontFamily: 'Montserrat',
       },
       backgroundColor: theme?.markTextColor,
       borderColor: theme?.markTextColor,
@@ -39,17 +51,23 @@ export function getChartConfig(
       name: item?.name,
       type: 'pie',
       data: item?.data,
-      radius: '75%',
       avoidLabelOverlap: false,
       label: {
-          position: 'outer',
-          alignTo: 'labelLine',
-          distanceToLabelLine: 5
+        ...item?.label,
+        textStyle: {
+          fontWeight: 700,
+          fontFamily: 'Montserrat',
+        },
       },
       labelLine: {
         normal: {
-          show: true,
+          ...item?.labelLine,
         },
+      },
+      textStyle: {
+        fontSize: 12,
+        fontWeight: 700,
+        fontFamily: 'Montserrat',
       },
     })),
     emphasis: {

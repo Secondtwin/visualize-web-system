@@ -1,8 +1,18 @@
-import { mapToBarChartOptions, mapToLineChartOptions, mapToPieChartOptions, mapToScatterChartOptions } from 'src/app/shared/mappers';
+import {
+  mapToBarChartOptions,
+  mapToBarChartStackedOptions,
+  mapToDonutChartOptions,
+  mapToLineAreaChartOptions,
+  mapToLineChartOptions,
+  mapToLineChartStackedOptions,
+  mapToPieChartOptions,
+  mapToScatterChartOptions,
+} from 'src/app/shared/mappers';
 import { EChartOption } from 'echarts';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AppStorageService } from 'src/app/app-storage.service';
 import { ValueChanges } from 'src/app/shared/models';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-display-charts',
@@ -19,12 +29,32 @@ export class DisplayChartsComponent {
       this.store.getRowHeaders(),
       this.store.getColumnHeaders(),
     );
+    this.lineChartStackedOptions = mapToLineChartStackedOptions(
+      this.store.getTableData(),
+      this.store.getRowHeaders(),
+      this.store.getColumnHeaders(),
+    );
+    this.lineAreaChartOptions = mapToLineAreaChartOptions(
+      this.store.getTableData(),
+      this.store.getRowHeaders(),
+      this.store.getColumnHeaders(),
+    );
     this.barChartOption = mapToBarChartOptions(
       this.store.getTableData(),
       this.store.getRowHeaders(),
       this.store.getColumnHeaders(),
     );
+    this.barChartStackedOption = mapToBarChartStackedOptions(
+      this.store.getTableData(),
+      this.store.getRowHeaders(),
+      this.store.getColumnHeaders(),
+    );
     this.pieChartOption = mapToPieChartOptions(
+      this.store.getTableData(),
+      this.store.getRowHeaders(),
+      this.store.getColumnHeaders(),
+    );
+    this.donutChartOption = mapToDonutChartOptions(
       this.store.getTableData(),
       this.store.getRowHeaders(),
       this.store.getColumnHeaders(),
@@ -40,14 +70,24 @@ export class DisplayChartsComponent {
   }
 
   public lineChartOptions: EChartOption;
+  public lineChartStackedOptions: EChartOption;
+  public lineAreaChartOptions: EChartOption;
   public barChartOption: EChartOption;
+  public barChartStackedOption: EChartOption;
   public scatterChartOption: EChartOption;
   public pieChartOption: EChartOption;
+  public donutChartOption: EChartOption;
   public selectedChart: string;
+  public options: FormGroup;
 
   private displayChartsValue: ValueChanges;
 
   public constructor(private store: AppStorageService) {}
+
+  /**
+   * Collects entered data
+   */
+  public collectFormData(): void {}
 
   /**
    * Chart tooltip formatter.

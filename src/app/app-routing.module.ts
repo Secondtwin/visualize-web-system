@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'create-account', component: CreateAccountComponent },
   { path: 'my-dashboard', component: MyDashboardComponent },
-  { path: '',   redirectTo: 'charts', pathMatch: 'full' },
+  { path: '',   redirectTo: 'home', pathMatch: 'full' },
+  { path: '**',   redirectTo: 'home' },
 ];
 
 @NgModule({
