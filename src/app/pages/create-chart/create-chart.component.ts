@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ValueChanges } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-create-chart',
@@ -7,6 +8,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateChartComponent {
+  @Input() public resetData: ValueChanges;
+
+  @Output() public initNextStep: EventEmitter<void> = new EventEmitter();
+
   public fileToUpload: File = null;
 
   /**

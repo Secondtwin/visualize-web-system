@@ -15,7 +15,7 @@ export function mapToDonutChartOptions(
     },
     series: [{
       type: 'pie',
-      radius: ['50%', '70%'],
+      radius: ['50%', '80%'],
       label: {
         show: false,
         position: 'center',

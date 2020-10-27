@@ -4,7 +4,10 @@
       <mat-tab label="ENTER DATA MANUALLY"
         class="mat-tab-wrapper">
         <div class="mat-tab-wrapper">
-          <app-create-chart-table></app-create-chart-table>
+          <app-create-chart-table
+            [resetData]="resetData"
+            (initNextStep)="initNextStep.emit()"
+          ></app-create-chart-table>
         </div>
       </mat-tab>
 

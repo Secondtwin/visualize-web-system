@@ -23,7 +23,7 @@ export function mapToBarChartStackedOptions(
       text: 'Bar Chart Stacked',
     },
     xAxis: {
-      data: rowHeaders?.map((item) => item?.header),
+      data: legendData,
     },
     series: values?.map((value, i) => ({
       name: legendData[i],

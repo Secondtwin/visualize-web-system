@@ -45,10 +45,10 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Fill out chart data</ng-template>
-      <app-create-chart-table
+      <app-create-chart
         [resetData]="resetData"
         (initNextStep)="initNextStep()"
-      ></app-create-chart-table>
+      ></app-create-chart>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Check Results</ng-template>
