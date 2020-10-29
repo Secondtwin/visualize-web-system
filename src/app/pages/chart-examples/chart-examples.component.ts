@@ -184,6 +184,43 @@ export class ChartExamplesComponent {
       }
     ],
   };
+  public barChartHorizontalOption = {
+    title: {
+      text: 'Bar Chart Horizontal Example'
+    },
+    yAxis: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    series: [{
+      data: [120, 200, 150, 80, 70, 110, 130],
+      type: 'bar',
+    }]
+  };
+  public barChartHorizontalStackedOption = {
+    title: {
+      text: 'Bar Chart Horizontal Stacked Example'
+    },
+    yAxis: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    series: [
+      {
+        type: 'bar',
+        stack: 'barChart',
+        data: [120, 200, 150, 80, 70, 110, 130],
+      },
+      {
+        type: 'bar',
+        stack: 'barChart',
+        data: [125, 210, 165, 30, 40, 105, 90],
+      },
+      {
+        type: 'bar',
+        stack: 'barChart',
+        data: [40, 50, 30, 30, 50, 60, 100],
+      }
+    ],
+  };
   public pieChartOption = {
     title: {
       text: 'Pie Chart Example'

@@ -51,8 +51,7 @@
     <mat-form-field *ngFor="let rowHeader of displayedRows">
       <input matInput
         value="{{rowHeader?.header}}"
-        (change)="changeHeaderRow($event?.target?.value, rowHeader)"
-      >
+        (change)="changeHeaderRow($event?.target?.value, rowHeader)">
     </mat-form-field>
   </div>
 
@@ -83,6 +82,6 @@
 <br>
 <button mat-raised-button
   color="primary"
-  (click)=collectData()>
+  (click)="collectData()">
   Display Data
 </button>

@@ -6,3 +6,5 @@ export { mapToBarChartStackedOptions } from './bar-chart-stacked.mapper';
 export { mapToPieChartOptions } from './pie-chart.mapper';
 export { mapToDonutChartOptions } from './donut-chart.mapper';
 export { mapToScatterChartOptions } from './scatter-chart.mapper';
+export { mapToBarChartHorizontalOptions } from './bar-chart-horizontal.mapper';
+export { mapToBarChartHorizontalStackedOptions } from './bar-chart-horizontal-stacked.mapper';

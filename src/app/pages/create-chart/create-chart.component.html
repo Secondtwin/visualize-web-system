@@ -13,11 +13,69 @@
 
       <mat-tab label="UPLOAD EXEL FILE">
         <div class="mat-tab-wrapper">
-          <p>Please upload file with data.</p>
+          <mat-accordion>
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Example for entering data
+                </mat-panel-title>
+                <mat-panel-description>
+                  Click to {{ panelOpenState ? 'close' : 'explore' }}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <table mat-table
+                [dataSource]="dataSource">
+                <ng-container matColumnDef="header">
+                  <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                  <td mat-cell *matCellDef="let element"><i>{{ element.header }}</i></td>
+                </ng-container>
+                <ng-container matColumnDef="first">
+                  <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                  <td mat-cell *matCellDef="let element">{{ element.first }}</td>
+                </ng-container>
+                <ng-container matColumnDef="second">
+                  <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                  <td mat-cell *matCellDef="let element">{{ element.second }}</td>
+                </ng-container>
+                <ng-container matColumnDef="third">
+                  <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                  <td mat-cell *matCellDef="let element">{{ element.third }}</td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <div>
+                <button mat-stroked-button
+                  (click)="export()">
+                  Download Example
+                </button>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <br>
+          <p>
+            <b>
+              Please upload file with data.
+            </b>
+          </p>
           <input type="file"
             id="file"
             class="input-button"
-            (change)="handleFileInput($event.target.files)">
+            multiple="false"
+            accept=".xlsx"
+            (change)="handleFileInput($event)"/>
+          <br>
+          <br>
+          <div>Please click the button to see the results.</div>
+          <br>
+          <button mat-raised-button
+            color="primary"
+            (click)="collectData()">
+            Display Data
+          </button>
         </div>
       </mat-tab>
     </mat-tab-group>

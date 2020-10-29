@@ -1,4 +1,6 @@
 import {
+  mapToBarChartHorizontalOptions,
+  mapToBarChartHorizontalStackedOptions,
   mapToBarChartOptions,
   mapToBarChartStackedOptions,
   mapToDonutChartOptions,
@@ -49,6 +51,16 @@ export class DisplayChartsComponent {
       this.store.getRowHeaders(),
       this.store.getColumnHeaders(),
     );
+    this.barChartHorizontalOption = mapToBarChartHorizontalOptions(
+      this.store.getTableData(),
+      this.store.getRowHeaders(),
+      this.store.getColumnHeaders(),
+    );
+    this.barChartHorizontalStackedOption = mapToBarChartHorizontalStackedOptions(
+      this.store.getTableData(),
+      this.store.getRowHeaders(),
+      this.store.getColumnHeaders(),
+    );
     this.pieChartOption = mapToPieChartOptions(
       this.store.getTableData(),
       this.store.getRowHeaders(),
@@ -74,6 +86,8 @@ export class DisplayChartsComponent {
   public lineAreaChartOptions: EChartOption;
   public barChartOption: EChartOption;
   public barChartStackedOption: EChartOption;
+  public barChartHorizontalOption: EChartOption;
+  public barChartHorizontalStackedOption: EChartOption;
   public scatterChartOption: EChartOption;
   public pieChartOption: EChartOption;
   public donutChartOption: EChartOption;

@@ -16,6 +16,18 @@
   </div>
   <div class="chart-examples-wrapper">
     <mat-card class="chart-examples">
+      <app-bar-chart-horizontal
+        [chartData]="barChartHorizontalOption"
+      ></app-bar-chart-horizontal>
+    </mat-card>
+    <mat-card class="chart-examples">
+      <app-bar-chart-horizontal
+        [chartData]="barChartHorizontalStackedOption"
+      ></app-bar-chart-horizontal>
+    </mat-card>
+  </div>
+  <div class="chart-examples-wrapper">
+    <mat-card class="chart-examples">
       <app-pie-chart
         [chartData]="pieChartOption"
         [tooltipFormatter]="tooltipBarChartFormatter"

@@ -23,6 +23,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ChartExamplesComponent } from './pages/chart-examples/chart-examples.component';
 import { CreateChartComponent } from './pages/create-chart/create-chart.component';
@@ -31,6 +32,7 @@ import { DisplayChartsComponent } from './pages/display-charts/display-charts.co
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import {
   BarChartComponent,
+  BarChartHorizontalComponent,
   LineChartComponent,
   PieChartComponent,
   ScatterChartComponent,
@@ -58,11 +60,13 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatStepperModule,
     MatRadioModule,
+    MatExpansionModule,
   ],
   declarations: [
     AppComponent,
     ChartExamplesComponent,
     BarChartComponent,
+    BarChartHorizontalComponent,
     LineChartComponent,
     PieChartComponent,
     ScatterChartComponent,

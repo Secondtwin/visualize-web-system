@@ -20,7 +20,7 @@ export function getChartConfig(
 ): EChartOption<EChartOption.SeriesLine> {
   const xAxisData = xAxis as EChartOption.XAxis;
   const yAxisData = yAxis as EChartOption.YAxis;
-  const [top, right, bottom, left] = '70 10 40 50'.split(' ');
+  const [top, right, bottom, left] = '70 20 40 50'.split(' ');
   const defaultSymbolSize = 10;
 
   return {
