@@ -66,6 +66,7 @@
           class="form-input">
           <mat-form-field>
             <input matInput
+              type="number"
               value="{{row[colIndex]?.value}}"
               (change)="changeRow($event?.target?.value, row[colIndex]?.id)"
             >
