@@ -15,6 +15,7 @@ export function getChartConfig(
     series = [],
     xAxis = {} as EChartOption.XAxis,
     yAxis = {},
+    toolbox,
   }: EChartOption<EChartOption.SeriesBar>,
 ): EChartOption<EChartOption.SeriesBar> {
   const checkForFalse = (value: string): boolean => value && value !== 'false';
@@ -158,19 +159,6 @@ export function getChartConfig(
         animationDurationUpdate: 1000,
       };
     }),
-    toolbox: {
-      show: true,
-      feature: {
-        dataView: {
-          title: 'See the displayed data',
-          readOnly: true,
-          lang: ['Data View', 'Back', 'Refresh Data'],
-          buttonColor: '#673ab7'
-        },
-        saveAsImage: {
-          title: 'Save as image',
-        },
-      }
-    },
+    toolbox,
   };
 }

@@ -1,5 +1,6 @@
 import { EChartOption } from 'echarts';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-chart-examples',
@@ -44,7 +45,56 @@ export class ChartExamplesComponent {
         type: 'line',
         data: [820, 932, 901, 934, 1290, 1330, 1320]
       }
-    ]
+    ],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        mySaveAsFile: {
+          show: true,
+          title: 'Save as file',
+          icon: 'image:///assets/download-file.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+          onclick: () => this.exportLineChart(),
+        },
+      }
+    },
   };
   public lineChartStackedOption = {
     title: {
@@ -87,7 +137,56 @@ export class ChartExamplesComponent {
         stack: 'week',
         data: [820, 932, 901, 934, 1290, 1330, 1320]
       }
-    ]
+    ],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        mySaveAsFile: {
+          show: true,
+          title: 'Save as file',
+          icon: 'image:///assets/download-file.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+          onclick: () => this.exportLineChart(),
+        },
+      }
+    },
   };
   public lineAreaChartOption = {
     title: {
@@ -145,7 +244,56 @@ export class ChartExamplesComponent {
         },
         data: [820, 932, 901, 934, 1290, 1330, 1320]
       }
-    ]
+    ],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        mySaveAsFile: {
+          show: true,
+          title: 'Save as file',
+          icon: 'image:///assets/download-file.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+          onclick: () => this.exportLineChart(),
+        },
+      }
+    },
   };
   public barChartOption = {
     title: {
@@ -157,7 +305,56 @@ export class ChartExamplesComponent {
     series: [{
       data: [120, 200, 150, 80, 70, 110, 130],
       type: 'bar',
-    }]
+    }],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        mySaveAsFile: {
+          show: true,
+          title: 'Save as file',
+          icon: 'image:///assets/download-file.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+          onclick: () => this.exportBarChart(),
+        },
+      }
+    },
   };
   public barChartStackedOption = {
     title: {
@@ -183,6 +380,55 @@ export class ChartExamplesComponent {
         data: [40, 50, 30, 30, 50, 60, 100],
       }
     ],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        mySaveAsFile: {
+          show: true,
+          title: 'Save as file',
+          icon: 'image:///assets/download-file.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+          onclick: () => this.exportBarChartStacked(),
+        },
+      }
+    },
   };
   public barChartHorizontalOption = {
     title: {
@@ -194,7 +440,56 @@ export class ChartExamplesComponent {
     series: [{
       data: [120, 200, 150, 80, 70, 110, 130],
       type: 'bar',
-    }]
+    }],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        mySaveAsFile: {
+          show: true,
+          title: 'Save as file',
+          icon: 'image:///assets/download-file.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+          onclick: () => this.exportBarChart(),
+        },
+      }
+    },
   };
   public barChartHorizontalStackedOption = {
     title: {
@@ -220,6 +515,55 @@ export class ChartExamplesComponent {
         data: [40, 50, 30, 30, 50, 60, 100],
       }
     ],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        mySaveAsFile: {
+          show: true,
+          title: 'Save as file',
+          icon: 'image:///assets/download-file.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+          onclick: () => this.exportBarChartStacked(),
+        },
+      }
+    },
   };
   public pieChartOption = {
     title: {
@@ -240,7 +584,56 @@ export class ChartExamplesComponent {
           { value: 1548, name: 'Fri' }
         ],
       }
-    ]
+    ],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        mySaveAsFile: {
+          show: true,
+          title: 'Save as file',
+          icon: 'image:///assets/download-file.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+          onclick: () => this.exportPieChart(),
+        },
+      }
+    },
   };
   public donutChartOption = {
     title: {
@@ -275,7 +668,56 @@ export class ChartExamplesComponent {
           { value: 1548, name: 'Fri' }
         ],
       }
-    ]
+    ],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        mySaveAsFile: {
+          show: true,
+          title: 'Save as file',
+          icon: 'image:///assets/download-file.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+          onclick: () => this.exportPieChart(),
+        },
+      }
+    },
   };
   public scatterChartOption = {
     title: {
@@ -296,7 +738,41 @@ export class ChartExamplesComponent {
         [5.0, 5.68]
       ],
       type: 'scatter'
-    }]
+    }],
+    toolbox: {
+      show: true,
+      feature: {
+        dataView: {
+          title: 'See the displayed data',
+          icon: 'image:///assets/data-view.svg',
+          readOnly: true,
+          lang: ['Data View', 'Back', 'Refresh Data'],
+          buttonColor: '#673ab7',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+        saveAsImage: {
+          title: 'Save as image',
+          icon: 'image:///assets/download-img.svg',
+          iconStyle: {
+            opacity: .5,
+          },
+          emphasis: {
+            iconStyle: {
+              color: '#000000',
+              opacity: 1,
+            },
+          },
+        },
+      }
+    },
   };
 
   /**
@@ -371,5 +847,81 @@ export class ChartExamplesComponent {
       </span>
     </div>
     `;
+  }
+
+  public exportBarChart(): void {
+    /* generate worksheet */
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([
+      ['Mon', 120],
+      ['Tue', 200],
+      ['Wed', 150],
+      ['Thu', 80],
+      ['Fri', 70],
+      ['Sat', 110],
+      ['Sun', 130],
+    ]);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'Example.xlsx');
+  }
+
+  public exportBarChartStacked(): void {
+    /* generate worksheet */
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([
+      ['Mon', 120, 125, 40],
+      ['Tue', 200, 210, 50],
+      ['Wed', 150, 165, 30],
+      ['Thu', 80, 30, 30],
+      ['Fri', 70, 40, 50],
+      ['Sat', 110, 105, 60],
+      ['Sun', 130, 90, 100],
+    ]);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'Example.xlsx');
+  }
+
+  public exportLineChart(): void {
+    /* generate worksheet */
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([
+      ['Mon', 120, 220, 150, 320, 820],
+      ['Tue', 132, 182, 232, 332, 932],
+      ['Wed', 101, 191, 201, 301, 901],
+      ['Thu', 134, 234, 154, 334, 934],
+      ['Fri', 90, 290, 190, 390, 1290],
+    ]);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'Example.xlsx');
+  }
+
+  public exportPieChart(): void {
+    /* generate worksheet */
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([
+      ['Mon', 335],
+      ['Tue', 310],
+      ['Wed', 234],
+      ['Thu', 135],
+      ['Fri', 1548],
+    ]);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'Example.xlsx');
   }
 }

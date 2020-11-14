@@ -9,7 +9,7 @@ import { waldenTheme } from '../../theme/chart-theme.config';
  */
 export function getChartConfig(
   theme = waldenTheme?.theme,
-  { title, legend, series }: EChartOption<EChartOption.SeriesPie>,
+  { title, legend, series, toolbox }: EChartOption<EChartOption.SeriesPie>,
 ): EChartOption<EChartOption.SeriesPie> {
   return {
     backgroundColor: 'transparent',
@@ -77,19 +77,6 @@ export function getChartConfig(
         shadowColor: 'rgba(0, 0, 0, 0.5)',
       },
     },
-    toolbox: {
-      show: true,
-      feature: {
-        dataView: {
-          title: 'See the displayed data',
-          readOnly: true,
-          lang: ['Data View', 'Back', 'Refresh Data'],
-          buttonColor: '#673ab7'
-        },
-        saveAsImage: {
-          title: 'Save as image',
-        },
-      }
-    },
+    toolbox,
   };
 }

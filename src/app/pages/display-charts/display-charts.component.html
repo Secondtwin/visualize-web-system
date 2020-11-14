@@ -86,14 +86,14 @@
       </mat-card>
     </ng-container>
     <ng-container *ngIf="barChartHorizontalOption && !!displayCharts?.isValueChanged && selectedChart === 'BarChart'">
-      <mat-card class="chart-examples">
+      <mat-card class="chart-wrapper">
         <app-bar-chart-horizontal
           [chartData]="barChartHorizontalOption"
         ></app-bar-chart-horizontal>
       </mat-card>
     </ng-container>
     <ng-container *ngIf="barChartHorizontalStackedOption && !!displayCharts?.isValueChanged && selectedChart === 'BarChart'">
-      <mat-card class="chart-examples">
+      <mat-card class="chart-wrapper">
         <app-bar-chart-horizontal
           [chartData]="barChartHorizontalStackedOption"
         ></app-bar-chart-horizontal>

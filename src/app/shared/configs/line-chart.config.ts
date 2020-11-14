@@ -16,6 +16,7 @@ export function getChartConfig(
     xAxis = {} as EChartOption.XAxis,
     yAxis = {},
     legend,
+    toolbox,
   }: EChartOption<EChartOption.SeriesLine>,
 ): EChartOption<EChartOption.SeriesLine> {
   const xAxisData = xAxis as EChartOption.XAxis;
@@ -169,20 +170,7 @@ export function getChartConfig(
         fontFamily: 'Montserrat',
       },
     },
-    toolbox: {
-      show: true,
-      feature: {
-        dataView: {
-          title: 'See the displayed data',
-          readOnly: true,
-          lang: ['Data View', 'Back', 'Refresh Data'],
-          buttonColor: '#673ab7',
-        },
-        saveAsImage: {
-          title: 'Save as image',
-        },
-      }
-    },
+    toolbox,
   };
 }
 
