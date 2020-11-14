@@ -193,8 +193,5 @@ export class CreateChartTableComponent implements OnInit {
     this.store.setRowHeaders(this.displayedRows);
     this.store.setColumnHeaders(this.displayedColumnsChanges);
     this.initNextStep.emit();
-    console.log(this.tableData,
-      this.displayedRows,
-      this.displayedColumnsChanges);
   }
 }
