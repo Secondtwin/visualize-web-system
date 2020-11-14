@@ -44,7 +44,7 @@ export function mapToLineChartStackedOptions(
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -60,7 +60,7 @@ export function mapToLineChartStackedOptions(
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -74,7 +74,7 @@ export function mapToLineChartStackedOptions(
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },

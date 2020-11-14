@@ -51,7 +51,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -67,7 +67,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -81,7 +81,7 @@ export class ChartExamplesComponent {
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -143,7 +143,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -159,7 +159,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -173,7 +173,7 @@ export class ChartExamplesComponent {
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -250,7 +250,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -266,7 +266,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -280,7 +280,7 @@ export class ChartExamplesComponent {
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -311,7 +311,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -327,7 +327,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -341,7 +341,7 @@ export class ChartExamplesComponent {
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -385,7 +385,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -401,7 +401,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -415,7 +415,7 @@ export class ChartExamplesComponent {
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -446,7 +446,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -462,7 +462,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -476,7 +476,7 @@ export class ChartExamplesComponent {
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -520,7 +520,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -536,7 +536,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -550,7 +550,7 @@ export class ChartExamplesComponent {
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -590,7 +590,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -606,7 +606,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -620,7 +620,7 @@ export class ChartExamplesComponent {
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -674,7 +674,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -690,7 +690,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -704,7 +704,7 @@ export class ChartExamplesComponent {
         mySaveAsFile: {
           show: true,
           title: 'Save as file',
-          icon: 'image:///assets/download-file.svg',
+          icon: 'image://assets/download-file.svg',
           iconStyle: {
             opacity: .5,
           },
@@ -744,7 +744,7 @@ export class ChartExamplesComponent {
       feature: {
         dataView: {
           title: 'See the displayed data',
-          icon: 'image:///assets/data-view.svg',
+          icon: 'image://assets/data-view.svg',
           readOnly: true,
           lang: ['Data View', 'Back', 'Refresh Data'],
           buttonColor: '#673ab7',
@@ -760,7 +760,7 @@ export class ChartExamplesComponent {
         },
         saveAsImage: {
           title: 'Save as image',
-          icon: 'image:///assets/download-img.svg',
+          icon: 'image://assets/download-img.svg',
           iconStyle: {
             opacity: .5,
           },
