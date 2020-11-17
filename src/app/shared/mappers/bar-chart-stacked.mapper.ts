@@ -6,6 +6,11 @@ export function mapToBarChartStackedOptions(
   tableData: TableDataValue[][],
   rowHeaders: TableDataHeader[],
   columnHeaders: TableDataHeader[],
+  title: string = 'Bar Chart Stacked',
+  showLegend: boolean = false,
+  showToolbox: boolean = true,
+  showXSplitLine: boolean = false,
+  showYSplitLine: boolean = false,
 ): EChartOption {
   const legendData = rowHeaders?.map((item) => item?.header);
   const numberOfValues = tableData ? tableData[0]?.length : 0;
@@ -24,10 +29,21 @@ export function mapToBarChartStackedOptions(
 
   return {
     title: {
-      text: 'Bar Chart Stacked',
+      text: title ? title : '',
+    },
+    legend: {
+      show: showLegend,
     },
     xAxis: {
       data: legendData,
+      splitLine: {
+        show: showXSplitLine,
+      },
+    },
+    yAxis: {
+      splitLine: {
+        show: showYSplitLine,
+      },
     },
     series: values?.map((value, i) => ({
       name: legendData[i],
@@ -36,7 +52,7 @@ export function mapToBarChartStackedOptions(
       data: value?.map((item) => item?.value),
     })),
     toolbox: {
-      show: true,
+      show: showToolbox,
       feature: {
         dataView: {
           title: 'See the displayed data',

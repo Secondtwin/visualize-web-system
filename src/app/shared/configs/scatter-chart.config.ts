@@ -77,6 +77,9 @@ export function getChartConfig(
       axisLine: {
         show: false,
       },
+      splitLine: {
+        show: xAxis?.splitLine?.show,
+      },
     },
     yAxis: {
       ...yAxis,
@@ -100,6 +103,9 @@ export function getChartConfig(
       },
       axisLine: {
         show: false,
+      },
+      splitLine: {
+        show: yAxis?.splitLine?.show,
       },
     },
     series: series.map((item) => ({

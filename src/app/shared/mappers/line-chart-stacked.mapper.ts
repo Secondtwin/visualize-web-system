@@ -6,6 +6,11 @@ export function mapToLineChartStackedOptions(
   tableData: TableDataValue[][],
   rowHeaders: TableDataHeader[],
   columnHeaders: TableDataHeader[],
+  title: string = 'Line Chart Stacked',
+  showLegend: boolean = true,
+  showToolbox: boolean = true,
+  showXSplitLine: boolean = false,
+  showYSplitLine: boolean = false,
 ): EChartOption {
   const legendData = rowHeaders?.map((item) => item?.header);
   const xAxisData = columnHeaders?.map((item) => item?.header);
@@ -25,13 +30,22 @@ export function mapToLineChartStackedOptions(
 
   return {
     title: {
-      text: 'Line Chart Stacked',
+      text: title ? title : '',
     },
     legend: {
+      show: showLegend,
       data: legendData,
     },
     xAxis: {
       data: legendData,
+      splitLine: {
+        show: showXSplitLine,
+      },
+    },
+    yAxis: {
+      splitLine: {
+        show: showYSplitLine,
+      },
     },
     series: values?.map((value, i) => ({
       name: legendData[i],
@@ -40,7 +54,7 @@ export function mapToLineChartStackedOptions(
       data: value?.map((item) => item?.value),
     })),
     toolbox: {
-      show: true,
+      show: showToolbox,
       feature: {
         dataView: {
           title: 'See the displayed data',

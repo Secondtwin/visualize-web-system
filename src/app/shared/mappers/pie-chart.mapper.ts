@@ -6,6 +6,10 @@ export function mapToPieChartOptions(
   tableData: TableDataValue[][],
   rowHeaders: TableDataHeader[],
   columnHeaders: TableDataHeader[],
+  title: string = 'Pie Chart',
+  outerRadius: string = '75%',
+  showOuterLabel: boolean = true,
+  showToolbox: boolean = true,
 ): EChartOption {
   let exportedData = [];
 
@@ -13,15 +17,16 @@ export function mapToPieChartOptions(
 
   return {
     title: {
-      text: 'Pie Chart',
+      text: title ? title : '',
     },
     xAxis: {
       data: rowHeaders?.map((item) => item?.header),
     },
     series: [{
       type: 'pie',
-      radius: '75%',
+      radius: outerRadius,
       label: {
+        show: showOuterLabel,
         position: 'outer',
         alignTo: 'labelLine',
         distanceToLabelLine: 5,
@@ -35,7 +40,7 @@ export function mapToPieChartOptions(
       })),
     }],
     toolbox: {
-      show: true,
+      show: showToolbox,
       feature: {
         dataView: {
           title: 'See the displayed data',

@@ -88,7 +88,7 @@ export function getChartConfig(
           show: false,
         },
         splitLine: {
-          show: getShowableValue(xAxisData.splitLine, false),
+          show: xAxisData.splitLine?.show,
           lineStyle: {
             color: theme?.tooltipAxisColor,
           },

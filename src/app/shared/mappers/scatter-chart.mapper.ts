@@ -6,6 +6,10 @@ export function mapToScatterChartOptions(
   tableData: TableDataValue[][],
   rowHeaders: TableDataHeader[],
   columnHeaders: TableDataHeader[],
+  title: string = 'Scatter Chart',
+  showToolbox: boolean = true,
+  showXSplitLine: boolean = true,
+  showYSplitLine: boolean = true,
 ): EChartOption {
   let exportedData = [];
 
@@ -17,7 +21,17 @@ export function mapToScatterChartOptions(
 
   return {
     title: {
-      text: 'Scatter Chart',
+      text: title ? title : '',
+    },
+    xAxis: {
+      splitLine: {
+        show: showXSplitLine,
+      },
+    },
+    yAxis: {
+      splitLine: {
+        show: showYSplitLine,
+      },
     },
     series: [{
       type: 'scatter',
@@ -27,7 +41,7 @@ export function mapToScatterChartOptions(
       ])),
     }],
     toolbox: {
-      show: true,
+      show: showToolbox,
       feature: {
         dataView: {
           title: 'See the displayed data',

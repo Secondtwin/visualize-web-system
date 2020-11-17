@@ -37,7 +37,7 @@ import {
   PieChartComponent,
   ScatterChartComponent,
 } from './shared/components/index';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -61,6 +61,7 @@ import { FormsModule } from '@angular/forms';
     MatStepperModule,
     MatRadioModule,
     MatExpansionModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     AppComponent,

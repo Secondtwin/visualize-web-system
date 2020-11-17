@@ -723,6 +723,16 @@ export class ChartExamplesComponent {
     title: {
       text: 'Scatter Chart Example'
     },
+    xAxis: {
+      splitLine: {
+        show: true,
+      },
+    },
+    yAxis: {
+      splitLine: {
+        show: true,
+      },
+    },
     series: [{
       data: [
         [10.0, 8.04],

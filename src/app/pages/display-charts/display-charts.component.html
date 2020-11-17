@@ -1,29 +1,220 @@
 <div *ngIf="!selectedChart">Please choose chart type on 1st step.</div>
 <div class="displayed-charts-wrapper">
-  <div *ngIf="false"
-    class="options-wrapper">
+  <div class="options-wrapper">
     <div class="change-options-label">
       Change Options:
     </div>
 
-    <form *ngIf="pieChartOption && !!displayCharts?.isValueChanged && selectedChart === 'PieChart'">
+    <form *ngIf="pieChartOption && selectedChart === 'PieChart'"
+      [formGroup]="pieChartForm">
+      <mat-form-field>
+        <mat-label>Enter Title for Chart: </mat-label>
+        <input matInput
+          formControlName="title">
+      </mat-form-field>
       <div class="form-label">Circle Radius:</div>
       <mat-form-field>
         <mat-label>Enter Circle Radius</mat-label>
         <input matInput
+          formControlName="circleRadius"
           type="number"
           min="0"
           max="100">
+        <mat-hint align="end">From 1 to 100</mat-hint>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Enter Inner Circle Radius</mat-label>
         <input matInput
+          formControlName="circleOuterRadius"
           type="number"
           min="0"
           max="100">
+        <mat-hint align="end">From 1 to 100</mat-hint>
       </mat-form-field>
       <div class="form-label">Show Outer Label:</div>
-      <mat-radio-group>
+      <mat-radio-group
+        formControlName="showOuterLabel">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="form-label">Show Chart Toolbox:</div>
+      <mat-radio-group
+        formControlName="showToolbox">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+    </form>
+
+    <form *ngIf="lineChartOptions && selectedChart === 'LineChart'"
+      [formGroup]="lineChartForm">
+      <mat-form-field>
+        <mat-label>Enter Title for Chart: </mat-label>
+        <input matInput
+          formControlName="title">
+      </mat-form-field>
+      <div class="form-label">Show Chart Legend:</div>
+      <mat-radio-group
+        formControlName="showLegend">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="form-label">Show Chart Toolbox:</div>
+      <mat-radio-group
+        formControlName="showToolbox">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="form-label">Show x-axis Split Lines:</div>
+      <mat-radio-group
+        formControlName="showXSplitLine">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="form-label">Show y-axis Split Lines:</div>
+      <mat-radio-group
+        formControlName="showYSplitLine">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+    </form>
+
+    <form *ngIf="barChartOption && selectedChart === 'BarChart'"
+      [formGroup]="barChartForm">
+      <mat-form-field>
+        <mat-label>Enter Title for Chart: </mat-label>
+        <input matInput
+          formControlName="title">
+      </mat-form-field>
+      <div class="form-label">Show Chart Toolbox:</div>
+      <mat-radio-group
+        formControlName="showToolbox">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="form-label">Show x-axis Split Lines:</div>
+      <mat-radio-group
+        formControlName="showXSplitLine">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="form-label">Show y-axis Split Lines:</div>
+      <mat-radio-group
+        formControlName="showYSplitLine">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+    </form>
+
+    <form *ngIf="scatterChartOption && selectedChart === 'ScatterChart'"
+      [formGroup]="scatterChartForm">
+      <mat-form-field>
+        <mat-label>Enter Title for Chart: </mat-label>
+        <input matInput
+          formControlName="title">
+      </mat-form-field>
+      <div class="form-label">Show Chart Toolbox:</div>
+      <mat-radio-group
+        formControlName="showToolbox">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="form-label">Show x-axis Split Lines:</div>
+      <mat-radio-group
+        formControlName="showXSplitLine">
+        <mat-radio-button
+          value="yes"
+          class="radio-button-margin">
+          Yes
+        </mat-radio-button>
+        <mat-radio-button
+          value="no"
+          class="radio-button-margin">
+          No
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="form-label">Show y-axis Split Lines:</div>
+      <mat-radio-group
+        formControlName="showYSplitLine">
         <mat-radio-button
           value="yes"
           class="radio-button-margin">
@@ -38,6 +229,7 @@
     </form>
 
     <button mat-raised-button
+      type="submit"
       color="primary"
       (click)="collectFormData()">
       Apply Changes

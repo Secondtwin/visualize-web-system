@@ -6,6 +6,11 @@ export function mapToBarChartHorizontalOptions(
   tableData: TableDataValue[][],
   rowHeaders: TableDataHeader[],
   columnHeaders: TableDataHeader[],
+  title: string = 'Bar Chart Horizontal',
+  showLegend: boolean = false,
+  showToolbox: boolean = true,
+  showXSplitLine: boolean = false,
+  showYSplitLine: boolean = false,
 ): EChartOption {
   let exportedData = [];
 
@@ -13,17 +18,28 @@ export function mapToBarChartHorizontalOptions(
 
   return {
     title: {
-      text: 'Bar Chart Horizontal',
+      text: title ? title : '',
+    },
+    legend: {
+      show: showLegend,
+    },
+    xAxis: {
+      splitLine: {
+        show: showXSplitLine,
+      },
     },
     yAxis: {
       data: rowHeaders?.map((item) => item?.header),
+      splitLine: {
+        show: showYSplitLine,
+      },
     },
     series: [{
       type: 'bar',
       data: tableData?.map((column) => Math.max(...column?.map((row) => Number.parseFloat(row?.value)))),
     }],
     toolbox: {
-      show: true,
+      show: showToolbox,
       feature: {
         dataView: {
           title: 'See the displayed data',

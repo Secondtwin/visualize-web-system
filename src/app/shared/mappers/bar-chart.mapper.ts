@@ -6,6 +6,11 @@ export function mapToBarChartOptions(
   tableData: TableDataValue[][],
   rowHeaders: TableDataHeader[],
   columnHeaders: TableDataHeader[],
+  title: string = 'Bar Chart',
+  showLegend: boolean = false,
+  showToolbox: boolean = true,
+  showXSplitLine: boolean = false,
+  showYSplitLine: boolean = false,
 ): EChartOption {
   let exportedData = [];
 
@@ -13,17 +18,28 @@ export function mapToBarChartOptions(
 
   return {
     title: {
-      text: 'Bar Chart',
+      text: title ? title : '',
+    },
+    legend: {
+      show: showLegend,
     },
     xAxis: {
       data: rowHeaders?.map((item) => item?.header),
+      splitLine: {
+        show: showXSplitLine,
+      },
+    },
+    yAxis: {
+      splitLine: {
+        show: showYSplitLine,
+      },
     },
     series: [{
       type: 'bar',
       data: tableData?.map((column) => Math.max(...column?.map((row) => Number.parseFloat(row?.value)))),
     }],
     toolbox: {
-      show: true,
+      show: showToolbox,
       feature: {
         dataView: {
           title: 'See the displayed data',

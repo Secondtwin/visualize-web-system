@@ -6,6 +6,11 @@ export function mapToDonutChartOptions(
   tableData: TableDataValue[][],
   rowHeaders: TableDataHeader[],
   columnHeaders: TableDataHeader[],
+  title: string = 'Donut Chart',
+  outerRadius: string = '80%',
+  innerRadius: string = '50%',
+  showOuterLabel: boolean = false,
+  showToolbox: boolean = true,
 ): EChartOption {
   let exportedData = [];
 
@@ -13,16 +18,16 @@ export function mapToDonutChartOptions(
 
   return {
     title: {
-      text: 'Pie Chart',
+      text: title ? title : '',
     },
     xAxis: {
       data: rowHeaders?.map((item) => item?.header),
     },
     series: [{
       type: 'pie',
-      radius: ['50%', '80%'],
+      radius: [innerRadius, outerRadius],
       label: {
-        show: false,
+        show: showOuterLabel,
         position: 'center',
       },
       labelLine : {
@@ -40,7 +45,7 @@ export function mapToDonutChartOptions(
       })),
     }],
     toolbox: {
-      show: true,
+      show: showToolbox,
       feature: {
         dataView: {
           title: 'See the displayed data',
